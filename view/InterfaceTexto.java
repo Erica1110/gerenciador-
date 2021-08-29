@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import repositorio.RepositorioDeCliente;
 import repositorio.RepositorioDeEndereco;
-import repositorio.RepositorioDeProdutos;
+import repositorio.RepositorioDeProduto;
 import repositorio.RepositorioDeVenda;
 
 public class InterfaceTexto {
@@ -12,30 +12,40 @@ public class InterfaceTexto {
 	private InterfaceTextoCliente interfaceTextoCliente;
 	private InterfaceTextoProduto interfaceTextoProduto;
 	private InterfaceTextoVenda interfaceTextoVenda;
-	private InterfaceTextoEndereco interfaceTextoEndereco;
 	
-	public InterfaceTexto(RepositorioDeCliente repositorioDeCliente, RepositorioDeEndereco repositorioDeEndereco, RepositorioDeVenda repositorioDeVenda, RepositorioDeProdutos repositorioDeProdutos) {
+	
+	public InterfaceTexto(RepositorioDeCliente repositorioDeCliente, RepositorioDeEndereco repositorioDeEndereco, RepositorioDeVenda repositorioDeVenda, RepositorioDeProduto repositorioDeProdutos) {
 		this.scanner=new Scanner(System.in);
 		this.interfaceTextoCliente=new InterfaceTextoCliente(scanner, repositorioDeCliente, repositorioDeEndereco);
-		this.interfaceTextoProduto=new InterfaceTextoProduto(scanner, repositorioDeProdutos, repositorioDeVenda);
-		this.interfaceTextoVenda=new InterfaceTextoVenda(scanner, repositorioDeVenda, repositorioDeProdutos, repositorioDeCliente);
-		this.interfaceTextoEndereco=new InterfaceTextoEndereco(scanner, repositorioDeEndereco, repositorioDeCliente);
+		this.interfaceTextoProduto=new InterfaceTextoProduto(scanner, repositorioDeProdutos, repositorioDeEndereco);
+		this.interfaceTextoVenda=new InterfaceTextoVenda(scanner, repositorioDeVenda, interfaceTextoProduto, interfaceTextoCliente);
+		
 	}
 	
 	
 	public void iniciarGerenciamente(){
 		int opcao=0;
-		do {//apresentar menu
+		do {
+			System.out.println("Digite o menu desejado");
+			System.out.println("1-Clientes");
+			System.out.println("2-Vendas");
+			System.out.println("3-Produtos");
+			System.out.println("4-Sair");
+			
 			opcao=this.scanner.nextInt();
 			switch(opcao) {
 				case 1:
 					this.interfaceTextoCliente.gerenciarClientes();
 					break;
 				case 2:
-					
+					this.interfaceTextoVenda.gerenciarVendas();
+					break;
+				case 3:
+					this.interfaceTextoProduto.gerenciarProduto();
+					break;
 			}
 			
-		}while(opcao!=0);
+		}while(opcao!=4);
 		System.out.println("Obrigado por usar nosso sistema, volte sempre!");
 	}
 	
