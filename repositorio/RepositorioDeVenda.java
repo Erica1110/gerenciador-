@@ -1,4 +1,4 @@
-package view;
+package repositorio;
 
 public class RepositorioDeVenda {
 

@@ -2,6 +2,9 @@ package view;
 
 import java.util.Scanner;
 
+import repositorio.RepositorioDeCliente;
+import repositorio.RepositorioDeEndereco;
+
 public class InterfaceTextoCliente {
 	private Scanner scanner; 
 	private RepositorioDeCliente repositorio;
