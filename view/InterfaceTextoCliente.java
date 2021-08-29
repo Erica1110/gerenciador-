@@ -29,13 +29,24 @@ public class InterfaceTextoCliente {
 			System.out.println("6-Sair");
 
 			switch (opcao) {
-				case 1:
-					this.cadastrar();
-					break;
-					
-				case 2:
-					//fazer o restante
+			case 1:
+				this.cadastrar();
+				break;
 
+			case 2:
+				this.exibirTodos();
+				break;
+				
+			case 3:
+			    this.pesquisarUsuario();
+			    break;
+			case 4:
+				this.editar();
+				break;
+			case 5:
+				this.delete();
+				break;
+			
 			}
 
 		} while (opcao != 6);
@@ -45,5 +56,18 @@ public class InterfaceTextoCliente {
 	private void cadastrar() {
 
 	}
-	//private void 2
+
+	private void exibirTodos() {
+		
+	}
+	
+	private void pesquisarUsuario() {
+		
+	}
+	private void editar() {
+		
+	}
+	private void delete() {
+		
+	}
 }
