@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 
+import jdk.internal.misc.FileSystemOption;
 import model.Cliente;
 import model.Endereco;
 import repositorio.RepositorioDeCliente;
@@ -136,14 +137,25 @@ public class InterfaceTextoCliente {
 
 	public Cliente selecionarCliente() {
 		int id=0;
+		boolean repete=false;
 		Cliente clienteSelecionado=null;
 		do {
 			System.out.println("Digite o id");
 			id=this.scanner.nextInt();
-			if(clienteSelecionado!=null) 
-			System.out.println(clienteSelecionado);
+			if(clienteSelecionado!=null) {
+				System.out.println(clienteSelecionado);
+			}
+			if(clienteSelecionado==null){
+				System.out.println("Digite 'sim' para procurar novamente");
+				repete=true;
 				
-		} while(repete);
+				
+			} else { repete=false;
+			}
+			
+			}
+		
+		while(repete);
 		
 		      
 	}
