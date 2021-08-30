@@ -15,7 +15,6 @@ public class InterfaceTextoCliente {
 	public InterfaceTextoCliente(Scanner sc, RepositorioDeCliente repositorioDeCliente,
 			RepositorioDeEndereco repositorioDeEndereco) {
 		this.scanner = sc;
-		this.scanner = new Scanner(System.in);
 		this.repositorio = repositorioDeCliente;
 		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco);
 	}
@@ -30,8 +29,6 @@ public class InterfaceTextoCliente {
 			System.out.println("4-Editar");
 			System.out.println("5-Delete");
 			System.out.println("6-Sair");
-			
-			opcao = this.scanner.nextInt();
 
 			switch (opcao) {
 			case 1:
@@ -87,10 +84,10 @@ public class InterfaceTextoCliente {
 				repete=false;
 			}
 				
-				
-				repete=false;
-			}else{
+			else {
 			
+				
+				
 				System.out.println("Digite sim se deseja confirmar");
 				confirmacao=this.scanner.nextLine();
 				if(confirmacao.equalsIgnoreCase("sim")) {
