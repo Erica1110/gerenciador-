@@ -152,10 +152,10 @@ public class InterfaceTextoCliente {
 			} else { repete=false;
 			}
 			
-			}
+			
 		
-		while(repete);
+		} while(repete);
 		
-		      
-	}
+		return clienteSelecionado;
+		}
 }
