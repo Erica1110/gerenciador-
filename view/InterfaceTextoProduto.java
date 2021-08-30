@@ -30,15 +30,17 @@ public class InterfaceTextoProduto {
 			opcao=this.scanner.nextInt();
 			switch(opcao) {
 			case 1:
-				this.Valores();
+				this.valores();
 				break;
 			case 2:
-				this.DisponiveisNoEstoque();
+				this.disponiveisNoEstoque();
 			case 3:
-				this.Departamentos();
+				this.departamentos();
 		}
 			
-		   } while(opcao!=4);        
+		   } while(opcao!=4);
+		System.out.println("Opção não encontrada, digite uma opção existente");
+		
 		}
 	
 	

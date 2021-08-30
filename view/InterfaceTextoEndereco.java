@@ -8,24 +8,25 @@ import repositorio.RepositorioDeEndereco;
 public class InterfaceTextoEndereco {
 	private Scanner scanner;
 	private RepositorioDeEndereco repositorio;
-	
+
 	public InterfaceTextoEndereco(Scanner sc, RepositorioDeEndereco repositorio) {
-		this.scanner=sc;
-		this.repositorio=repositorio;
+		this.scanner = sc;
+		this.repositorio = repositorio;
 	}
+
 	public Endereco cadastrarEndereco() {
-		Endereco endereco=null;
-		boolean repete=false;
+		Endereco endereco = null;
+		boolean repete = false;
 		do {
-			System.out.println("Deseja continuar?");
-			
-			System.out.println("Processo concluido");
-			
-			//ler os dados do endereço e ver se o usuario confirma ou cancela
+			System.out.println("Deseja continuar? Escreva sim ou não.");
+
+			if (confirmar == sim) {
+				System.out.println("Processo concluido");
+			}
+
+			// ler os dados do endereço e ver se o usuario confirma ou cancela
 		} while (repete);
 		return endereco;
 	}
-	
-	
-	
+
 }

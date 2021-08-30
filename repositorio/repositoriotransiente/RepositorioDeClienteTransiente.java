@@ -28,7 +28,7 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 	}
 
 	@Override
-	public void remove(Cliente cliente) {
+	public void delete(Cliente cliente) {
 		this.clientes.remove(cliente);
 
 		
