@@ -2,7 +2,6 @@ package view;
 
 import java.util.Scanner;
 
-import jdk.internal.misc.FileSystemOption;
 import model.Cliente;
 import model.Endereco;
 import repositorio.RepositorioDeCliente;
