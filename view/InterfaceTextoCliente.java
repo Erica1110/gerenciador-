@@ -68,7 +68,7 @@ public class InterfaceTextoCliente {
 	   
 	    do { 
             System.out.println("Digite sim se deseja continuar");
-            if (Sim);
+            if(Sim);
             System.out.println("Bem vindo ao nosso time");
                    
 			
@@ -106,7 +106,7 @@ public class InterfaceTextoCliente {
 		
 	do {
 		System.out.println("Digite sim se deseja continuar");
-		if (Sim);
+		
 		System.out.println("Sua conta foi removida");
 		
 		

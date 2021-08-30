@@ -29,8 +29,8 @@ public class InterfaceTextoVenda {
 		opcao=this.scanner.nextInt();
 		switch(opcao) {
 		case 1:
-			this.InterfaceTextoCliente.Visualizar compra();
-			break;ss
+			this.InterfaceTextoCliente.Visualizarcompra();
+			break;
 		case 2:
 			this.Relatorio de compras();
 			break;

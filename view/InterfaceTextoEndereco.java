@@ -18,7 +18,7 @@ public class InterfaceTextoEndereco {
 		boolean repete=false;
 		do {
 			System.out.println("Deseja continuar?");
-			if (sim);
+			
 			System.out.println("Processo concluido");
 			
 			//ler os dados do endereço e ver se o usuario confirma ou cancela
