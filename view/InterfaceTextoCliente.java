@@ -2,12 +2,12 @@ package view;
 
 import java.util.Scanner;
 
+import model.Cliente;
 import model.Endereco;
 import repositorio.RepositorioDeCliente;
 import repositorio.RepositorioDeEndereco;
 
 public class InterfaceTextoCliente {
-	private static final boolean = false;
 	private Scanner scanner;
 	private RepositorioDeCliente repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
@@ -38,19 +38,19 @@ public class InterfaceTextoCliente {
 			case 2:
 				this.exibirTodos();
 				break;
-				
+
 			case 3:
-			    this.pesquisarUsuario();
-			    break;
-			    
+				this.pesquisarUsuario();
+				break;
+
 			case 4:
 				this.editar();
 				break;
-				
+
 			case 5:
 				this.delete();
 				break;
-			
+
 			}
 
 		} while (opcao != 6);
@@ -58,60 +58,82 @@ public class InterfaceTextoCliente {
 	}
 
 	private void cadastrar() {
-		String nome=null;
-	    long cpf=0;
-	    long telefone=0;
-	    int id=0;
-	    Endereco endereco;
-	    boolean repete=false;
-	    boolean cancelado=false;
-	   
-	    do { 
-            System.out.println("Digite sim se deseja continuar");
-            if(Sim);
-            System.out.println("Bem vindo ao nosso time");
-                   
+		String nome = null;
+		long cpf = 0;
+		long telefone = 0;
+		int id = 0;
+		Endereco endereco;
+		boolean repete = false;
+		boolean cancelado = false;
+
+		do {
+			System.out.println("Digite seu nome");
+			nome=this.scanner.nextLine();
+			System.out.println("Digite seu CPF");
+			cpf=this.scanner.nextLong();
+			System.out.println("Digite seu telefone");
+			telefone=this.scanner.nextLong();
 			
+					
+			System.out.println("nome="+nome+", cpf="+cpf+", telefone="+telefone);		
+					
+				
+			System.out.println("Digite 'confirmar' para continuar ou 'editar' para editar os dados");
+			String confirmacao=this.scanner.nextLine();
+			if(confirmacao.equalsIgnoreCase("confirmar")) {
+				
+			}
+				repete=false;
+			else {
+			
+				
+				
+				System.out.println("Digite sim se deseja confirmar");
+				confirmacao=this.scanner.nextLine();
+				if(confirmacao.equalsIgnoreCase("sim")) {
+					repete=false;
+				}else {
+					repete=true;
+				}
+				
+		
+			}
 		} while (repete);
 
-	    if (!cancelado) {
-	    	endereco=this.interfaceTextoEndereco.cadastrarEndereco();
-	    	if (endereco!=null) {
-	    		//cadastrar o cliente no repositorio
-	    	}
-	    	
-	    	
-	    }
-	    
+		if (!cancelado) {
+			endereco = this.interfaceTextoEndereco.cadastrarEndereco();
+			if (endereco != null) {
+				// cadastrar o cliente no repositorio
+			}
+
+		}
+
 	}
 
-	
 	private void exibirTodos() {
-		
-	}
-	
-	private void pesquisarUsuario() {
-		
-		
-	}
-	private void editar() {
-		
-		
-		
-	}
-	
-	private void delete() {
-		String nome=null;
-		 long cpf=0;
-		
-	do {
-		System.out.println("Digite sim se deseja continuar");
-		
-		System.out.println("Sua conta foi removida");
-		
-		
-	} while (Repete);
-	}
-	
+
 	}
 
+	private void pesquisarUsuario() {
+
+	}
+
+	private void editar() {
+
+	}
+
+	private void delete() {
+		Cliente clienteSelecionado= this.selecionarCliente();
+		if(clienteSelecionado!=null) {
+			boolean certeza=false;
+			//perguntar se tem certeza e mudar a variavel 
+			if(certeza) {
+				this.repositorio.Delete;
+			}
+		}
+	}
+
+	public Cliente selecionarCliente() {
+
+	}
+}

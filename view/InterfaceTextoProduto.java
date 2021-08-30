@@ -38,6 +38,9 @@ public class InterfaceTextoProduto {
 				this.Departamentos();
 		}
 			
-		   } while(opcao!=5);
+		   } while(opcao!=4);        
+		}
 	
-	       }
+	
+	
+	
