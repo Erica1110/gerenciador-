@@ -81,9 +81,9 @@ public class InterfaceTextoCliente {
 			System.out.println("Digite 'confirmar' para continuar ou 'editar' para editar os dados");
 			String confirmacao=this.scanner.nextLine();
 			if(confirmacao.equalsIgnoreCase("confirmar")) {
-				
-			}
 				repete=false;
+			}
+				
 			else {
 			
 				
@@ -125,15 +125,26 @@ public class InterfaceTextoCliente {
 	private void delete() {
 		Cliente clienteSelecionado= this.selecionarCliente();
 		if(clienteSelecionado!=null) {
-			boolean certeza=false;
-			//perguntar se tem certeza e mudar a variavel 
-			if(certeza) {
-				this.repositorio.Delete;
+			System.out.println("Tem certeza que deseja continuar? Digite 'sim' para deletar.");
+			String confirmacao=this.scanner.nextLine();
+			if(confirmacao.equalsIgnoreCase("sim")) {
+				this.repositorio.delete(clienteSelecionado);
 			}
+			
 		}
 	}
 
 	public Cliente selecionarCliente() {
-
+		int id=0;
+		Cliente clienteSelecionado=null;
+		do {
+			System.out.println("Digite o id");
+			id=this.scanner.nextInt();
+			if(clienteSelecionado!=null) 
+			System.out.println(clienteSelecionado);
+				
+		} while(repete);
+		
+		      
 	}
 }
