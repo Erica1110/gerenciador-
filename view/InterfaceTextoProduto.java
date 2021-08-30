@@ -33,7 +33,7 @@ public class InterfaceTextoProduto {
 				this.Valores();
 				break;
 			case 2:
-				this.Disponiveis no estoque();
+				this.DisponiveisNoEstoque();
 			case 3:
 				this.Departamentos();
 		}
