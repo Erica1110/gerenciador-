@@ -1,11 +1,12 @@
 package model;
 
 public class Cliente {
-	int id = 0;
-	long cpf = 0;
+	int id;
+	long cpf;
 	String nome;
+	int numeroDoTelefone;
 
-	public int getId() {
+	public int getid() {
 		
 		
 		

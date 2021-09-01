@@ -15,7 +15,7 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 	
 	public Cliente get(int id) {
 		for (Cliente cliente : this.clientes) {
-			if (cliente.getId() == id) {
+			if (cliente.getid() == id) {
 				return cliente;
 			} 
 		} 

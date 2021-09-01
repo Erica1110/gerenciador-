@@ -40,12 +40,15 @@ public class InterfaceTextoProduto {
 			case 3:
 				this.departamentos();
 				break;
-			}while(opcao!=4){
-
-				System.out.println("Opção não encontrada, digite uma opção existente");
-
-			}
-	}
+		    }
+		}while(opcao!=4);
+		    	
+		    System.out.println("Opção não encontrada, digite uma opção existente");
+		    
+			
+		    
+			
+	 }
 
 	public void valores() {
 

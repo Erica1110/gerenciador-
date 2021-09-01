@@ -10,9 +10,5 @@ public abstract class RepositorioDeCliente {
 	public abstract void delete(Cliente cliente);
 	public abstract List<Cliente> getAll();
 	
-	
-	
-	
-		
-	
+
 }
