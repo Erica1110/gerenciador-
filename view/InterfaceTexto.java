@@ -5,16 +5,17 @@ import java.util.Scanner;
 import repositorio.RepositorioDeCliente;
 import repositorio.RepositorioDeEndereco;
 import repositorio.RepositorioDeProduto;
+import repositorio.repositoriotransiente.RepositorioDeEnderecoTransiente;
 
 public class InterfaceTexto {
 	private Scanner scanner;
 	private InterfaceTextoCliente interfaceTextoCliente;
 	private InterfaceTextoProduto interfaceTextoProduto;
 	
-	public InterfaceTexto(RepositorioDeCliente repositorioDeCliente, RepositorioDeEndereco repositorioDeEndereco, RepositorioDeProduto repositorioDeProdutos) {
+	public InterfaceTexto(RepositorioDeCliente repositorioDeCliente, RepositorioDeEnderecoTransiente repositorioDeEnderecoTransiente, RepositorioDeProduto repositorioDeProdutos) {
 		this.scanner=new Scanner(System.in);
-		this.interfaceTextoCliente=new InterfaceTextoCliente(scanner, repositorioDeCliente, repositorioDeEndereco);
-		this.interfaceTextoProduto=new InterfaceTextoProduto(scanner, repositorioDeProdutos, repositorioDeEndereco);
+		this.interfaceTextoCliente=new InterfaceTextoCliente(scanner, repositorioDeCliente, repositorioDeEnderecoTransiente);
+		this.interfaceTextoProduto=new InterfaceTextoProduto(scanner, repositorioDeProdutos, repositorioDeEnderecoTransiente);
 		
 	}
 	
