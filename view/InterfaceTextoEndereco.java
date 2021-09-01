@@ -19,8 +19,11 @@ public class InterfaceTextoEndereco {
 		boolean repete = false;
 		do {
 			System.out.println("Deseja continuar? Escreva sim ou não.");
+			
+			String confirmar= scanner.nextLine();
 
-			if (confirmar == sim) {
+			if (confirmar.equalsIgnoreCase ("Sim")) {
+				// Consertar isso 
 				System.out.println("Processo concluido");
 			}
 

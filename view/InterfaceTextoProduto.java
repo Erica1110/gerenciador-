@@ -5,19 +5,18 @@ import java.util.Scanner;
 import repositorio.RepositorioDeEndereco;
 import repositorio.RepositorioDeProduto;
 
-
 public class InterfaceTextoProduto {
 	private Scanner scanner;
 	private RepositorioDeProduto repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
-	
-	
-	public InterfaceTextoProduto(Scanner sc, RepositorioDeProduto repositorio, RepositorioDeEndereco repositorioDeEndereco) { 
-		this.scanner=sc;
-		this.repositorio=repositorio;
+
+	public InterfaceTextoProduto(Scanner sc, RepositorioDeProduto repositorio,
+			RepositorioDeEndereco repositorioDeEndereco) {
+		this.scanner = sc;
+		this.repositorio = repositorio;
 		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco);
 	}
-	
+
 	public void gerenciarProduto() {
 		int opcao = 0;
 		do {
@@ -29,20 +28,34 @@ public class InterfaceTextoProduto {
 			 
 			opcao=this.scanner.nextInt();
 			switch(opcao) {
+			
+			
 			case 1:
 				this.valores();
 				break;
+				
 			case 2:
 				this.disponiveisNoEstoque();
+				break;
 			case 3:
 				this.departamentos();
-		}
-			
-		   } while(opcao!=4);
-		System.out.println("Opção não encontrada, digite uma opção existente");
-		
-		}
-	
-	
-	
-	
+				break;
+			}while(opcao!=4){
+
+				System.out.println("Opção não encontrada, digite uma opção existente");
+
+			}
+	}
+
+	public void valores() {
+
+	}
+
+	public void departamentos() {
+
+	}
+
+	public void disponiveisNoEstoque() {
+
+	}
+}

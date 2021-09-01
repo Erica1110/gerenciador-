@@ -26,22 +26,24 @@ public class InterfaceTextoVenda {
 		System.out.println("4-Nota fiscal");
 		System.out.println("5-Sair");
 	
-		opcao=this.scanner.nextInt();
+		int opcao=this.scanner.nextInt();
 		switch(opcao) {
 		case 1:
-			this.InterfaceTextoCliente.Visualizarcompra();
+			this.InterfaceTextoCliente.visualizarcompra();
 			break;
 		case 2:
-			this.Relatorio de compras();
+			this.relatorioDeCompras();
 			break;
 		case 3:
-			this.Exibir vendas();
+			this.exibirVendas();
 			break;
 		case 4:
-			this.Notas fiscais();
+			this.notasFiscais();
 			break;
 			
-		} while(opcao!=5);
+		} while(opcao!=5) {
+			System.out.print("Opção não encontrada, digite uma opção existente");
+		}
 		
 		
 		
