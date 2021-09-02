@@ -12,7 +12,8 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 
 	public RepositorioDeClienteTransiente () {
 		this.clientes=new ArrayList<>();
-	}throw new RuntimeException("Cliente não encontrado.");
+	throw new RuntimeException("Cliente não encontrado.");
+	}
 
 	
 
@@ -31,6 +32,14 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 	@Override
 	public List<Cliente> getAll() {
 		return clientes;
+	}
+
+
+
+	@Override
+	public Cliente get(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
