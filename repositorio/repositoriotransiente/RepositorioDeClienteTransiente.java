@@ -9,18 +9,12 @@ import repositorio.RepositorioDeCliente;
 public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 
 	private List<Cliente> clientes;
+
 	public RepositorioDeClienteTransiente () {
 		this.clientes=new ArrayList<>();
-	}
+	}throw new RuntimeException("Cliente não encontrado.");
+
 	
-	public Cliente get(int id) {
-		for (Cliente cliente : this.clientes) {
-			if (cliente.getid() == id) {
-				return cliente;
-			} 
-		} 
-		throw new RuntimeException("Cliente não encontrado.");
-	}
 
 	@Override
 	public void add(Cliente cliente) {
@@ -38,7 +32,5 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 	public List<Cliente> getAll() {
 		return clientes;
 	}
-	 
-	
 
 }

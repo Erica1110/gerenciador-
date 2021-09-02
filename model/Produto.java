@@ -5,8 +5,9 @@ int idDoProduto;
 String nome;
 float preco;
 
-public void getid() {
+public int getid() {
 	
+	return 0;
 }
 
 }

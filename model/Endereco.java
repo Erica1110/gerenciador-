@@ -6,7 +6,8 @@ public class Endereco {
 	int numeroDaCasa;
 	String Bairro;
 	 
-	public void getid() {
+	public int getid() {
 		
+		return 0;
 	}
 } 
