@@ -22,7 +22,7 @@ public class RepositorioDeProdutoTransiente extends RepositorioDeProduto {
 			}
 		}
 		
-		throw new RuntimeException("Endereço não encontrado."); 
+		throw new RuntimeException("Produto não encontrado."); 
 	}
 		
 

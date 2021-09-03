@@ -23,7 +23,6 @@ public class InterfaceTextoEndereco {
 			String confirmar= scanner.nextLine();
 
 			if (confirmar.equalsIgnoreCase ("Sim")) {
-				// Consertar isso 
 				System.out.println("Processo concluido");
 			}
 

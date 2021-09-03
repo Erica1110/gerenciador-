@@ -12,7 +12,7 @@ public class InterfaceTexto {
 	private InterfaceTextoCliente interfaceTextoCliente;
 	private InterfaceTextoProduto interfaceTextoProduto;
 	
-	public InterfaceTexto(RepositorioDeCliente repositorioDeCliente, RepositorioDeEnderecoTransiente repositorioDeEnderecoTransiente, RepositorioDeProduto repositorioDeProdutos) {
+	public InterfaceTexto(RepositorioDeCliente repositorioDeCliente, RepositorioDeEndereco repositorioDeEnderecoTransiente, RepositorioDeProduto repositorioDeProdutos) {
 		this.scanner=new Scanner(System.in);
 		this.interfaceTextoCliente=new InterfaceTextoCliente(scanner, repositorioDeCliente, repositorioDeEnderecoTransiente);
 		this.interfaceTextoProduto=new InterfaceTextoProduto(scanner, repositorioDeProdutos, repositorioDeEnderecoTransiente);
