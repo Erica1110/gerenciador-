@@ -10,7 +10,8 @@ public class Principal {
 		InterfaceTexto interfaceT;
 		interfaceT = new InterfaceTexto(new RepositorioDeClienteTransiente(), new RepositorioDeEnderecoTransiente(), new RepositorioDeProdutoTransiente());
 		interfaceT.iniciarGerenciamente();
-		  
+		//Terminar o construtor 
+		
 		
 	}
 
