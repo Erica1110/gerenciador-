@@ -15,8 +15,6 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 	throw new RuntimeException("Cliente não encontrado.");
 	}
 
-	
-
 	@Override
 	public void add(Cliente cliente) {
 		this.clientes.add(cliente);
