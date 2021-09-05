@@ -1,8 +1,8 @@
 package model;
 
 public class Endereco {
-	int id;
-	String cidade;
+	public int id= 0;
+	private String cidade;
 	int numeroDaCasa;
 	String Bairro;
 	 

@@ -55,11 +55,14 @@ public class InterfaceTextoEndereco {
 	}
 	
 	public  Endereco editar() {
-		Endereco.getid(); 
-		
+		return null;
 		
 	}
+		
+		
+	
 	public Endereco verTodos() {
+		return null;
 		
 	}
 }

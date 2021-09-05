@@ -33,6 +33,7 @@ public class InterfaceTexto {
 			System.out.println("2-Produtos");
 			System.out.println("3-Endereço");
 			opcao=this.scanner.nextInt();
+			scanner.nextLine();
 			switch(opcao) {
 				case 1:
 					this.interfaceTextoCliente.gerenciarClientes();

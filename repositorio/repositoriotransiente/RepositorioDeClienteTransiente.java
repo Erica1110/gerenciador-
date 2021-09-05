@@ -12,7 +12,7 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 
 	public RepositorioDeClienteTransiente () {
 		this.clientes=new ArrayList<>();
-	throw new RuntimeException("Cliente não encontrado.");
+
 	}
 
 	@Override
@@ -36,8 +36,15 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 
 	@Override
 	public Cliente get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		for(int i=0; i<clientes.size() ; i++){
+			Cliente clienteSelecionado= this.clientes.get(i);
+			if (id==clienteSelecionado.getid()) {
+				return clienteSelecionado;
+			}
+				
+		}
+		
+		throw new IllegalArgumentException("Cliente não encontrado");
 	}
-
+	
 }
