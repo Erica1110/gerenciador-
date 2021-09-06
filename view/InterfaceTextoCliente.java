@@ -38,7 +38,7 @@ public class InterfaceTextoCliente {
 				break;
 
 			case 2:
-				this.exibirTodos();
+				this.exibirCliente();
 				break;
 
 			case 3:
@@ -59,7 +59,7 @@ public class InterfaceTextoCliente {
 		System.out.println("Obrigado por usar nosso sistema, volte sempre!");
 	}
 
-	private void cadastrar() {
+	public void cadastrar() {
 		String nome = null;
 		long cpf = 0;
 		long telefone = 0;
@@ -100,34 +100,32 @@ public class InterfaceTextoCliente {
 		if (!cancelado) {
 			endereco = this.interfaceTextoEndereco.cadastrarEndereco();
 			if (endereco != null) {
-				// cadastrar o cliente no repositorio
+			
 			}
 
 		}
 
 	}
 
-	public Cliente exibirTodos(){
-
-		List<Cliente> getAll() {
-		Cliente clientes;
-		return clientes;
-		}
-
+	public Cliente exibirCliente(){
+		return null;
+		
 	}
+
+	
 
 	private void pesquisarUsuario() {
 
 	}
 
-	private Cliente editar() {
+	public Cliente editar() {
 		Cliente clienteSelecionado = this.selecionarCliente();
 		if (clienteSelecionado != null) {
 			System.out.println("O cliente que você procura é esse? digite sim ou nâo");
 			System.out.print(clienteSelecionado);
 			String confirmacao = this.scanner.nextLine();
 			if (confirmacao.equalsIgnoreCase("sim")) {
-				Cliente.cadastrar();
+				cadastrar();
 			}
 				
 			

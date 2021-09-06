@@ -39,17 +39,29 @@ public class InterfaceTextoEndereco {
 	public Endereco cadastrarEndereco() {
 		Endereco endereco = null;
 		boolean repete = false;
+		String cidade;
+		String bairro;
+		int numeroDaCasa;
+		System.out.println("Qual a sua cidade ?");
+	    cidade= scanner.nextLine();
+	    System.out.println("Em qual bairro você mora ?");
+	    bairro=scanner.nextLine();	
+	    System.out.println("E qual o numero da sua casa ?");
+	    numeroDaCasa=scanner.nextInt();
+	    System.out.print("os dados cidade"+cidade +", bairro" + bairro +", numero da casa"+numeroDaCasa+" estão coretos?");
+	    System.out.println("Se estão coerretos escreva sim ou não.");
 		do {
-			System.out.println("Deseja continuar? Escreva sim ou não.");
 
 			String confirmar = scanner.nextLine();
 
 			if (confirmar.equalsIgnoreCase("Sim")) {
 			
 				System.out.println("Processo concluido");
+			}else {
+				 repete= true;
 			}
 
-			// ler os dados do endereço e ver se o usuario confirma ou cancela
+			
 		} while (repete);
 		return endereco;
 	}
