@@ -1,23 +1,23 @@
 package view;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Cliente;
 import model.Endereco;
-import repositorio.RepositorioDeCliente;
-import repositorio.RepositorioDeEndereco;
+import repositorio.repositoriotransiente.RepositorioDeClienteTransiente;
+import repositorio.repositoriotransiente.RepositorioDeEnderecoTransiente;
 
 public class InterfaceTextoCliente {
 	private Scanner scanner;
-	private RepositorioDeCliente repositorio;
+	private RepositorioDeClienteTransiente repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
 
-	public InterfaceTextoCliente(Scanner sc, RepositorioDeCliente repositorioDeCliente,
-			RepositorioDeEndereco repositorioDeEndereco) {
+	public InterfaceTextoCliente(Scanner sc, RepositorioDeClienteTransiente repositorioDeClienteTransiente,
+			RepositorioDeEnderecoTransiente repositorioDeEnderecoTransiente) {
 		this.scanner = sc;
-		this.repositorio = repositorioDeCliente;
-		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco);
+		this.repositorio = repositorioDeClienteTransiente;
+		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEnderecoTransiente);
 	}
 
 	public void gerenciarClientes() {
@@ -38,7 +38,7 @@ public class InterfaceTextoCliente {
 				break;
 
 			case 2:
-				this.exibirCliente();
+				this.exibirTodos();
 				break;
 
 			case 3:
@@ -81,6 +81,8 @@ public class InterfaceTextoCliente {
 			System.out.println("Digite 'confirmar' para continuar ou 'editar' para editar os dados");
 			String confirmacao = this.scanner.nextLine();
 			if (confirmacao.equalsIgnoreCase("confirmar")) {
+	
+				
 				repete = false;
 			}
 
@@ -107,8 +109,8 @@ public class InterfaceTextoCliente {
 
 	}
 
-	public Cliente exibirCliente(){
-		return null;
+	public Cliente exibirTodos(){
+	return null;
 		
 	}
 

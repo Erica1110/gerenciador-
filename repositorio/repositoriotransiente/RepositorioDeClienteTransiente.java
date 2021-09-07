@@ -9,6 +9,7 @@ import repositorio.RepositorioDeCliente;
 public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 
 	private List<Cliente> clientes;
+	
 
 	public RepositorioDeClienteTransiente () {
 		this.clientes=new ArrayList<>();

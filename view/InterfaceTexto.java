@@ -2,8 +2,8 @@ package view;
 
 import java.util.Scanner;
 
-import repositorio.RepositorioDeCliente;
 import repositorio.RepositorioDeProduto;
+import repositorio.repositoriotransiente.RepositorioDeClienteTransiente;
 import repositorio.repositoriotransiente.RepositorioDeEnderecoTransiente;
 
 public class InterfaceTexto {
@@ -12,9 +12,9 @@ public class InterfaceTexto {
 	private InterfaceTextoProduto interfaceTextoProduto;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
 	
-	public InterfaceTexto(RepositorioDeCliente repositorioDeCliente, RepositorioDeEnderecoTransiente repositorioDeEnderecoTransiente, RepositorioDeProduto repositorioDeProdutos) {
+	public InterfaceTexto(RepositorioDeClienteTransiente repositorioDeClienteTransiente, RepositorioDeEnderecoTransiente repositorioDeEnderecoTransiente, RepositorioDeProduto repositorioDeProdutos) {
 		this.scanner=new Scanner(System.in);
-		this.interfaceTextoCliente= new InterfaceTextoCliente(scanner, repositorioDeCliente, repositorioDeEnderecoTransiente);
+		this.interfaceTextoCliente= new InterfaceTextoCliente(scanner, repositorioDeClienteTransiente, repositorioDeEnderecoTransiente);
 		this.interfaceTextoProduto= new InterfaceTextoProduto(scanner, repositorioDeProdutos, repositorioDeEnderecoTransiente);
 		this.interfaceTextoEndereco= new InterfaceTextoEndereco(scanner, repositorioDeEnderecoTransiente);
 	}
@@ -28,7 +28,8 @@ public class InterfaceTexto {
 	public void iniciarGerenciamente(){
 		int opcao=0;
 		do {
-			System.out.println("Digite o menu desejado");
+			System.out.println("===== Menu =====");
+			System.out.println("---Digite o menu desejado---");
 			System.out.println("1-Clientes");
 			System.out.println("2-Produtos");
 			System.out.println("3-Endereço");

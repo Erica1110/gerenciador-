@@ -4,44 +4,45 @@ import java.util.Scanner;
 
 import repositorio.RepositorioDeEndereco;
 import repositorio.RepositorioDeProduto;
+import repositorio.repositoriotransiente.RepositorioDeProdutoTransiente;
 
 public class InterfaceTextoProduto {
 	private Scanner scanner;
-	private RepositorioDeProduto repositorio;
-	private InterfaceTextoEndereco interfaceTextoEndereco;
+	private RepositorioDeProdutoTransiente repositorio;
 
-	public InterfaceTextoProduto(Scanner sc, RepositorioDeProduto repositorio,
+	public InterfaceTextoProduto(Scanner sc, RepositorioDeProduto repositorioDeProduto,
 			RepositorioDeEndereco repositorioDeEndereco) {
 		this.scanner = sc;
 		this.repositorio = repositorio;
-		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco);
+		
 	}
 
 	public void gerenciarProduto() {
 		int opcao = 0;
 		do {
-			System.out.println("Digite o menu desejado");
-			System.out.println("1-Valores");
-			System.out.println("2-Disponiveis no estoque");
-			System.out.println("3-Departamentos");
-			System.out.println("4-Sair");
+			System.out.println("---Digite o menu desejado---");
+			System.out.println("1-Cadastrar Produto");
+			System.out.println("2-Ver Produto");
+			System.out.println("3-Editar Produto");
+			System.out.println("4-Excluir Produtor");
+			System.out.println("5-Sair");
 			 
 			opcao=this.scanner.nextInt();
 			switch(opcao) {
 			
 			
 			case 1:
-				this.valores();
+				this.cadastrarProduto();
 				break;
 				
 			case 2:
-				this.disponiveisNoEstoque();
+				this.verProduto();
 				break;
 			case 3:
-				this.departamentos();
+				this.editarProduto();
 				break;
 		    }
-		}while(opcao!=4);
+		}while(opcao!=5);
 		    	
 		    System.out.println("Opção não encontrada, digite uma opção existente");
 		    
@@ -50,15 +51,39 @@ public class InterfaceTextoProduto {
 			
 	 }
 
-	public void valores() {
+	public void cadastrarProduto() {
+		int valor;
+		String nome;
+		boolean repete= false; 
+		String confirmar;
+		do {
+			System.out.println("Digite O nome do produto");
+			nome=scanner.nextLine();
+			System.out.println("Digite o valor do produto");
+			valor=scanner.nextInt();
+			System.out.println("Os dados vaçor="+valor+", nome"+nome+" estão corretos?");
+			System.out.print("Digite sim ou não");
+			confirmar=scanner.nextLine();
+			if (confirmar.equalsIgnoreCase("sim")) {
+				System.out.print("Cadastro concluido com sucesso :)");
+				
+			}else {
+				repete = true;
+			}
+			
+		}while(repete);
+		 repete = true;
 
 	}
 
-	public void departamentos() {
-
+	public void editarProduto() {
+     
 	}
 
-	public void disponiveisNoEstoque() {
+	public void verProduto() {
 
+	}
+	public void excluirProdutos() {
+		
 	}
 }

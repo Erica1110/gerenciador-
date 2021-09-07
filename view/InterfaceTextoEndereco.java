@@ -74,7 +74,6 @@ public class InterfaceTextoEndereco {
 		
 	
 	public Endereco verTodos() {
-		return null;
-		
+	 return null;
 	}
 }

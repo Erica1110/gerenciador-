@@ -6,6 +6,8 @@ public class Cliente {
 	String nome;
 	int numeroDoTelefone;
 
+	
+
 	public int getid() {
 		
 		
