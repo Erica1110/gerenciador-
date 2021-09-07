@@ -15,13 +15,13 @@ public class InterfaceTextoEndereco {
 	}
 
 	public void gerenciarEndereco() {
-		int opcao=0;
+		int opcao = 0;
 		System.out.println("Digite a opï¿½ï¿½o desejada");
 		do {
 			System.out.println("1-Cadastrar");
 			System.out.println("2-Editar");
 			System.out.println("3-Ver todos");
-			switch (opcao){
+			switch (opcao) {
 			case 1:
 				cadastrarEndereco();
 				break;
@@ -30,8 +30,8 @@ public class InterfaceTextoEndereco {
 			case 3:
 				verTodos();
 			}
-	     	
-		}while (opcao !=3);
+
+		} while (opcao != 3);
 		System.out.println("Obrigado por usar nosso sistema, volte sempre!");
 
 	}
@@ -42,14 +42,15 @@ public class InterfaceTextoEndereco {
 		String cidade;
 		String bairro;
 		int numeroDaCasa;
+		boolean cancelado = false;
 		System.out.println("Qual a sua cidade ?");
 	    cidade= scanner.nextLine();
 	    System.out.println("Em qual bairro vocï¿½ mora ?");
 	    bairro=scanner.nextLine();	
 	    System.out.println("E qual o numero da sua casa ?");
 	    numeroDaCasa=scanner.nextInt();
-	    System.out.print("os dados cidade"+cidade +", bairro" + bairro +", numero da casa"+numeroDaCasa+" estï¿½o coretos?");
-	    System.out.println("Se estï¿½o coerretos escreva sim ou nï¿½o.");
+	    System.out.print("os dados cidade " +cidade +", bairro " + bairro +", numero da casa "+numeroDaCasa+" estão coretos?");
+	    System.out.println("Os dados estão corretos? Se sim, escreva sim, e se estão errados escreva editar.");
 		do {
 
 			String confirmar = scanner.nextLine();
@@ -57,22 +58,24 @@ public class InterfaceTextoEndereco {
 			if (confirmar.equalsIgnoreCase("Sim")) {
 			
 				System.out.println("Processo concluido");
+				
 			}else {
 				 repete= true;
 			}
-
+			
 			
 		} while (repete);
 		return endereco;
-	}
 	
+		
+
+	}
+
 	public  Endereco editar() {
 		return null;
 		
 	}
-		
-		
-	
+
 	public Endereco verTodos() {
 	 return null;
 	}

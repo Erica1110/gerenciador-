@@ -32,7 +32,7 @@ public class InterfaceTexto {
 			System.out.println("---Digite o menu desejado---");
 			System.out.println("1-Clientes");
 			System.out.println("2-Produtos");
-			System.out.println("3-Endereï¿½o");
+			System.out.println("3-Endereço");
 			opcao=this.scanner.nextInt();
 			scanner.nextLine();
 			switch(opcao) {

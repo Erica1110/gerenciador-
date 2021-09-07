@@ -1,10 +1,10 @@
 package model;
 
 public class Endereco{
-	public int id= 0;
-	public String cidade;
-	int numeroDaCasa;
-	String Bairro;
+	private int id= 0;
+	private String cidade;
+	private int numeroDaCasa;
+	private String Bairro;
 	 
 	public int getid() {
 		

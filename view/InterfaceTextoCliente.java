@@ -1,23 +1,23 @@
 package view;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import model.Cliente;
 import model.Endereco;
-import repositorio.repositoriotransiente.RepositorioDeClienteTransiente;
-import repositorio.repositoriotransiente.RepositorioDeEnderecoTransiente;
+import repositorio.RepositorioDeCliente;
+import repositorio.RepositorioDeEndereco;
 
 public class InterfaceTextoCliente {
 	private Scanner scanner;
-	private RepositorioDeClienteTransiente repositorio;
+	private RepositorioDeCliente repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
 
-	public InterfaceTextoCliente(Scanner sc, RepositorioDeClienteTransiente repositorioDeClienteTransiente,
-			RepositorioDeEnderecoTransiente repositorioDeEnderecoTransiente) {
+	public InterfaceTextoCliente(Scanner sc, RepositorioDeCliente repositorioDeCliente,
+			RepositorioDeEndereco repositorioDeEndereco) {
 		this.scanner = sc;
-		this.repositorio = repositorioDeClienteTransiente;
-		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEnderecoTransiente);
+		this.repositorio = repositorioDeCliente;
+		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco);
 	}
 
 	public void gerenciarClientes() {
@@ -26,7 +26,7 @@ public class InterfaceTextoCliente {
 			System.out.println("Digite o menu");
 			System.out.println("1-Cadastro");
 			System.out.println("2-Exibir todos");
-			System.out.println("3-Pesquisar usuario");
+			System.out.println("3-Pesquisar cliente");
 			System.out.println("4-Editar");
 			System.out.println("5-Delete");
 			System.out.println("6-Sair");
@@ -42,7 +42,7 @@ public class InterfaceTextoCliente {
 				break;
 
 			case 3:
-				this.pesquisarUsuario();
+				this.pesquisarCliente();
 				break;
 
 			case 4:
@@ -62,8 +62,7 @@ public class InterfaceTextoCliente {
 	public void cadastrar() {
 		String nome = null;
 		long cpf = 0;
-		long telefone = 0;
-		int id = 0;
+		long numeroDoTelefone = 0;
 		Endereco endereco;
 		boolean repete = false;
 		boolean cancelado = false;
@@ -74,9 +73,9 @@ public class InterfaceTextoCliente {
 			System.out.println("Digite seu CPF");
 			cpf = this.scanner.nextLong();
 			System.out.println("Digite seu telefone");
-			telefone = this.scanner.nextLong();
+			numeroDoTelefone = this.scanner.nextLong();
 
-			System.out.println("nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone);
+			System.out.println("nome=" + nome + ", cpf=" + cpf + ", telefone=" + numeroDoTelefone);
 
 			System.out.println("Digite 'confirmar' para continuar ou 'editar' para editar os dados");
 			String confirmacao = this.scanner.nextLine();
@@ -84,40 +83,43 @@ public class InterfaceTextoCliente {
 	
 				
 				repete = false;
-			}
+			} 
 
 			else {
 
-				System.out.println("Digite sim se deseja confirmar");
-				confirmacao = this.scanner.nextLine();
-				if (confirmacao.equalsIgnoreCase("sim")) {
-					repete = false;
-				} else {
+				
 					repete = true;
-				}
-
 			}
-		} while (repete);
 
-		if (!cancelado) {
-			endereco = this.interfaceTextoEndereco.cadastrarEndereco();
-			if (endereco != null) {
 			
-			}
+		}while(repete);
 
+	if(!cancelado)
+
+	{
+		endereco = this.interfaceTextoEndereco.cadastrarEndereco();
+		if (endereco != null) {
+			Cliente cliente = new Cliente(cpf, nome, numeroDoTelefone, endereco);
+			repositorio.add(cliente);
 		}
 
 	}
 
-	public Cliente exibirTodos(){
-	return null;
+	}
+
+	public void exibirTodos(){
+		List<Cliente> clientes= this.repositorio.getAll();
+		for(int i=0; i<clientes.size(); i++){
+			Cliente clienteSelecionado = clientes.get(i);
+			System.out.println("Id="+clienteSelecionado);
+			
+		}
+		
 		
 	}
 
-	
-
-	private void pesquisarUsuario() {
-
+	private Cliente pesquisarCliente() {
+		return null;
 	}
 
 	public Cliente editar() {
@@ -134,8 +136,6 @@ public class InterfaceTextoCliente {
 			}
 		return clienteSelecionado;
 		}
-	
-	
 
 	private Cliente delete() {
 		Cliente clienteSelecionado = this.selecionarCliente();
@@ -151,7 +151,7 @@ public class InterfaceTextoCliente {
 	}
 
 	public Cliente selecionarCliente() {
-		int id = 0;
+		int id =0;
 		boolean repete = false;
 		Cliente clienteSelecionado = null;
 		do {
