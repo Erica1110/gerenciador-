@@ -3,6 +3,7 @@ package repositorio.repositoriotransiente;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Cliente;
 import model.Produto;
 import repositorio.RepositorioDeProduto;
 
@@ -14,34 +15,31 @@ public class RepositorioDeProdutoTransiente extends RepositorioDeProduto {
 		this.produto = new ArrayList<>();
 	}
 
-	public  Produto get(int id) {
-		for (Produto produto : this.produto) {
-			if (produto.getid() == id) {
-				
-				return produto;
-			}
-		}
-		
-		throw new RuntimeException("Produto não encontrado."); 
-	}
 		
 
 	@Override
 	public void add(Produto produto) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void delete(Produto produto) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public List<Produto> getAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	public Produto get(int id) {
+		for(int i=0; i<produto.size() ; i++){
+			Produto produtoSelecionado= this.produto.get(i);
+			if (id==produtoSelecionado.getid()) {
+				return produtoSelecionado;
+			}
+		}
+		throw new RuntimeException("Endereï¿½o nï¿½o encontrado."); 
+	}
 }

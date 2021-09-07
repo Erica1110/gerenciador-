@@ -1,8 +1,8 @@
 package model;
 
-public class Endereco {
-	int id;
-	String cidade;
+public class Endereco{
+	public int id= 0;
+	public String cidade;
 	int numeroDaCasa;
 	String Bairro;
 	 
