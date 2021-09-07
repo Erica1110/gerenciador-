@@ -1,23 +1,22 @@
 package view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Cliente;
 import model.Endereco;
-import repositorio.repositoriotransiente.RepositorioDeClienteTransiente;
-import repositorio.repositoriotransiente.RepositorioDeEnderecoTransiente;
+import repositorio.RepositorioDeCliente;
+import repositorio.RepositorioDeEndereco;
 
 public class InterfaceTextoCliente {
 	private Scanner scanner;
-	private RepositorioDeClienteTransiente repositorio;
+	private RepositorioDeCliente repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
 
-	public InterfaceTextoCliente(Scanner sc, RepositorioDeClienteTransiente repositorioDeClienteTransiente,
-			RepositorioDeEnderecoTransiente repositorioDeEnderecoTransiente) {
+	public InterfaceTextoCliente(Scanner sc, RepositorioDeCliente repositorioDeCliente,
+			RepositorioDeEndereco repositorioDeEndereco) {
 		this.scanner = sc;
-		this.repositorio = repositorioDeClienteTransiente;
-		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEnderecoTransiente);
+		this.repositorio = repositorioDeCliente;
+		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco);
 	}
 
 	public void gerenciarClientes() {
@@ -26,7 +25,7 @@ public class InterfaceTextoCliente {
 			System.out.println("Digite o menu");
 			System.out.println("1-Cadastro");
 			System.out.println("2-Exibir todos");
-			System.out.println("3-Pesquisar usuario");
+			System.out.println("3-Pesquisar cliente");
 			System.out.println("4-Editar");
 			System.out.println("5-Delete");
 			System.out.println("6-Sair");
@@ -42,7 +41,7 @@ public class InterfaceTextoCliente {
 				break;
 
 			case 3:
-				this.pesquisarUsuario();
+				this.pesquisarCliente();
 				break;
 
 			case 4:
@@ -102,7 +101,7 @@ public class InterfaceTextoCliente {
 		if (!cancelado) {
 			endereco = this.interfaceTextoEndereco.cadastrarEndereco();
 			if (endereco != null) {
-			
+				Cliente cliente= new Cliente();
 			}
 
 		}
@@ -116,8 +115,8 @@ public class InterfaceTextoCliente {
 
 	
 
-	private void pesquisarUsuario() {
-
+	private Cliente pesquisarCliente() {
+		return null;
 	}
 
 	public Cliente editar() {
