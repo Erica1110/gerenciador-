@@ -7,6 +7,7 @@ import model.Cliente;
 import model.Endereco;
 import repositorio.RepositorioDeCliente;
 import repositorio.RepositorioDeEndereco;
+import repositorio.RepositorioDeProduto;
 
 public class InterfaceTextoCliente {
 	private Scanner scanner;
@@ -14,7 +15,7 @@ public class InterfaceTextoCliente {
 	private InterfaceTextoEndereco interfaceTextoEndereco;
 
 	public InterfaceTextoCliente(Scanner sc, RepositorioDeCliente repositorioDeCliente,
-			RepositorioDeEndereco repositorioDeEndereco) {
+			RepositorioDeEndereco repositorioDeEndereco, RepositorioDeProduto repositorioDeProduto) {
 		this.scanner = sc;
 		this.repositorio = repositorioDeCliente;
 		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco);

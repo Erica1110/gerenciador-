@@ -40,6 +40,6 @@ public class RepositorioDeProdutoTransiente extends RepositorioDeProduto {
 				return produtoSelecionado;
 			}
 		}
-		throw new RuntimeException("Endereï¿½o nï¿½o encontrado."); 
+		throw new RuntimeException("Produto não encontrado."); 
 	}
 }

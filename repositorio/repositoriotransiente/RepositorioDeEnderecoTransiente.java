@@ -23,7 +23,7 @@ public class RepositorioDeEnderecoTransiente extends RepositorioDeEndereco {
 			}
 
 		}
-		throw new RuntimeException("Endere√ßo n√£o encontrado.");
+		throw new RuntimeException("EndereÁo n„o encontrado.");
 	}
 	
 	public void add(Endereco endereco) {
