@@ -125,7 +125,7 @@ public class InterfaceTextoCliente {
 	public Cliente editar() {
 		Cliente clienteSelecionado = this.selecionarCliente();
 		if (clienteSelecionado != null) {
-			System.out.println("O cliente que você procura é esse? digite sim ou nâo");
+			System.out.println("O cliente que vocï¿½ procura ï¿½ esse? digite sim ou nï¿½o");
 			System.out.print(clienteSelecionado);
 			String confirmacao = this.scanner.nextLine();
 			if (confirmacao.equalsIgnoreCase("sim")) {
