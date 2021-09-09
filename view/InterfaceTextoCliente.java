@@ -10,6 +10,7 @@ import repositorio.RepositorioDeEndereco;
 import repositorio.RepositorioDeProduto;
 
 public class InterfaceTextoCliente {
+	private static final Cliente Cliente = null;
 	private Scanner scanner;
 	private RepositorioDeCliente repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
@@ -27,10 +28,10 @@ public class InterfaceTextoCliente {
 			System.out.println("Digite o menu");
 			System.out.println("1-Cadastro");
 			System.out.println("2-Exibir todos");
-			System.out.println("3-Pesquisar cliente");
-			System.out.println("4-Editar");
-			System.out.println("5-Delete");
-			System.out.println("6-Sair");
+			System.out.println("3-Editar");
+			System.out.println("4-Delete");
+			System.out.println("5-Sair");
+		
 			opcao = scanner.nextInt();
 			scanner.nextLine();
 			switch (opcao) {
@@ -43,21 +44,18 @@ public class InterfaceTextoCliente {
 				break;
 
 			case 3:
-				this.pesquisarCliente();
-				break;
-
-			case 4:
 				this.editar();
 				break;
 
-			case 5:
+			case 4:
 				this.delete();
 				break;
 
+			
 			}
 
-		} while (opcao != 6);
-		System.out.println("Obrigado por usar nosso sistema, volte sempre!");
+		} while (opcao != 5);
+		
 	}
 
 	public void cadastrar() {
@@ -79,7 +77,7 @@ public class InterfaceTextoCliente {
 			this.scanner.nextLine();
 			
 			System.out.println("nome=" + nome + ", cpf=" + cpf + ", telefone=" + numeroDoTelefone);
-
+			System.out.println("");
 			System.out.println("Digite 'confirmar' para continuar ou 'editar' para editar os dados");
 			String confirmacao = this.scanner.nextLine();
 			
@@ -109,17 +107,18 @@ public class InterfaceTextoCliente {
 	}
 
 	public void exibirTodos() {
+		String confirmar;
 		List<Cliente> clientes = this.repositorio.getAll();
 		for (int i = 0; i < clientes.size(); i++) {
 			Cliente clienteSelecionado = clientes.get(i);
-			System.out.println("Id=" + clienteSelecionado+ ", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+"numero de telefone"+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
-
+			System.out.println("Id=" + clienteSelecionado+ ", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+", numero de telefone="+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
+			System.out.println("Digite 'Sair' para voltar voltar ao Menu de clientes.");
+			confirmar=this.scanner.nextLine();
+			if(confirmar.equalsIgnoreCase("Sair")) {
+				
+			}
 		}
 
-	}
-
-	private Cliente pesquisarCliente() {
-		return null;
 	}
 
 	public Cliente editar() {

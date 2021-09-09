@@ -1,13 +1,18 @@
 package model;
 
 public class Produto {
-int idDoProduto;
-String nome;
-float preco;
+	private int idDoProduto;
+	private String nome;
+	private int valor;
 
-public int getid() {
-	
-	return 0;
-}
+	public Produto (String nome, int valor) {
+		this.nome=nome;
+		this.valor=valor;
+	}
+
+	public int getid() {
+
+		return 0;
+	}
 
 }

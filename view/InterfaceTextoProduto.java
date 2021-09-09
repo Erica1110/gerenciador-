@@ -2,9 +2,9 @@ package view;
 
 import java.util.Scanner;
 
+import model.Produto;
 import repositorio.RepositorioDeEndereco;
 import repositorio.RepositorioDeProduto;
-import repositorio.repositoriotransiente.RepositorioDeProdutoTransiente;
 
 public class InterfaceTextoProduto {
 	private Scanner scanner;
@@ -61,10 +61,13 @@ public class InterfaceTextoProduto {
 			nome=scanner.nextLine();
 			System.out.println("Digite o valor do produto");
 			valor=scanner.nextInt();
-			System.out.println("Os dados vaçor="+valor+", nome"+nome+" estão corretos?");
+			System.out.println("Os dados valor="+valor+", nome"+nome+" estão corretos?");
 			System.out.print("Digite sim ou não");
 			confirmar=scanner.nextLine();
+			Produto produto= new Produto (nome, valor);
+			repositorio.add(produto);
 			if (confirmar.equalsIgnoreCase("sim")) {
+				
 				System.out.print("Cadastro concluido com sucesso :)");
 				
 			}else {

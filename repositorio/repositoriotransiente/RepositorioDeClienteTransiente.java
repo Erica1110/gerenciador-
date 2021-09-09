@@ -45,7 +45,7 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 				
 		}
 		
-		throw new IllegalArgumentException("Cliente nï¿½o encontrado");
+		throw new IllegalArgumentException("Cliente não encontrado");
 	}
 	
 }
