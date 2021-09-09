@@ -73,50 +73,49 @@ public class InterfaceTextoCliente {
 			nome = this.scanner.nextLine();
 			System.out.println("Digite seu CPF");
 			cpf = this.scanner.nextLong();
+			
 			System.out.println("Digite seu telefone");
 			numeroDoTelefone = this.scanner.nextLong();
-
+			this.scanner.nextLine();
+			
 			System.out.println("nome=" + nome + ", cpf=" + cpf + ", telefone=" + numeroDoTelefone);
 
 			System.out.println("Digite 'confirmar' para continuar ou 'editar' para editar os dados");
 			String confirmacao = this.scanner.nextLine();
+			
 			if (confirmacao.equalsIgnoreCase("confirmar")) {
-	
-				
+
 				repete = false;
-			} 
+			}
 
 			else {
 
-				
-					repete = true;
+				repete = true;
 			}
 
-			
-		}while(repete);
+		} while (repete);
 
-	if(!cancelado)
+		if (!cancelado)
 
-	{
-		endereco = this.interfaceTextoEndereco.cadastrarEndereco();
-		if (endereco != null) {
-			Cliente cliente = new Cliente(cpf, nome, numeroDoTelefone, endereco);
-			repositorio.add(cliente);
+		{
+			endereco = this.interfaceTextoEndereco.cadastrarEndereco();
+			if (endereco != null) {
+				Cliente cliente = new Cliente(cpf, nome, numeroDoTelefone, endereco);
+				repositorio.add(cliente);
+			}
+
 		}
 
 	}
 
-	}
-
-	public void exibirTodos(){
-		List<Cliente> clientes= this.repositorio.getAll();
-		for(int i=0; i<clientes.size(); i++){
+	public void exibirTodos() {
+		List<Cliente> clientes = this.repositorio.getAll();
+		for (int i = 0; i < clientes.size(); i++) {
 			Cliente clienteSelecionado = clientes.get(i);
-			System.out.println("Id="+clienteSelecionado);
-			
+			System.out.println("Id=" + clienteSelecionado+ ", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+"numero de telefone"+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
+
 		}
-		
-		
+
 	}
 
 	private Cliente pesquisarCliente() {
@@ -126,17 +125,16 @@ public class InterfaceTextoCliente {
 	public Cliente editar() {
 		Cliente clienteSelecionado = this.selecionarCliente();
 		if (clienteSelecionado != null) {
-			System.out.println("O cliente que vocï¿½ procura ï¿½ esse? digite sim ou nï¿½o");
+			System.out.println("O cliente que você procura é esse? digite sim ou não");
 			System.out.print(clienteSelecionado);
 			String confirmacao = this.scanner.nextLine();
 			if (confirmacao.equalsIgnoreCase("sim")) {
 				cadastrar();
 			}
-				
-			
-			}
-		return clienteSelecionado;
+
 		}
+		return clienteSelecionado;
+	}
 
 	private Cliente delete() {
 		Cliente clienteSelecionado = this.selecionarCliente();
@@ -152,7 +150,7 @@ public class InterfaceTextoCliente {
 	}
 
 	public Cliente selecionarCliente() {
-		int id =0;
+		int id = 0;
 		boolean repete = false;
 		Cliente clienteSelecionado = null;
 		do {

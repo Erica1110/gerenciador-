@@ -16,11 +16,14 @@ public class InterfaceTextoEndereco {
 
 	public void gerenciarEndereco() {
 		int opcao = 0;
-		System.out.println("Digite a opï¿½ï¿½o desejada");
+		System.out.println("Digite a opção desejada");
 		do {
 			System.out.println("1-Cadastrar");
 			System.out.println("2-Editar");
 			System.out.println("3-Ver todos");
+			System.out.println("4-Sair");
+			opcao = this.scanner.nextInt();
+			this.scanner.nextLine();
 			switch (opcao) {
 			case 1:
 				cadastrarEndereco();
@@ -31,8 +34,7 @@ public class InterfaceTextoEndereco {
 				verTodos();
 			}
 
-		} while (opcao != 3);
-		System.out.println("Obrigado por usar nosso sistema, volte sempre!");
+		} while (opcao != 4);
 
 	}
 
@@ -42,23 +44,25 @@ public class InterfaceTextoEndereco {
 		String cidade;
 		String bairro;
 		int numeroDaCasa;
-		boolean cancelado = false;
 		System.out.println("Qual a sua cidade ?");
 	    cidade= scanner.nextLine();
-	    System.out.println("Em qual bairro vocï¿½ mora ?");
+	    System.out.println("Em qual bairro você mora ?");
 	    bairro=scanner.nextLine();	
 	    System.out.println("E qual o numero da sua casa ?");
 	    numeroDaCasa=scanner.nextInt();
-	    System.out.print("os dados cidade " +cidade +", bairro " + bairro +", numero da casa "+numeroDaCasa+" estão coretos?");
+	    System.out.println("os dados cidade " +cidade +", bairro " + bairro +", numero da casa "+numeroDaCasa+" estão coretos?");
 	    System.out.println("Os dados estão corretos? Se sim, escreva sim, e se estão errados escreva editar.");
 		do {
 
 			String confirmar = scanner.nextLine();
 
 			if (confirmar.equalsIgnoreCase("Sim")) {
-			
-				System.out.println("Processo concluido");
+				endereco= new Endereco(cidade, numeroDaCasa, bairro);
+				repositorio.add(endereco);
 				
+				System.out.println("Processo concluido");
+		
+				repete = false;
 			}else {
 				 repete= true;
 			}
@@ -66,17 +70,17 @@ public class InterfaceTextoEndereco {
 			
 		} while (repete);
 		return endereco;
-	
+		
 		
 
 	}
 
-	public  Endereco editar() {
+	public Endereco editar() {
 		return null;
-		
+
 	}
 
 	public Endereco verTodos() {
-	 return null;
+		return null;
 	}
 }

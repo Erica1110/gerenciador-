@@ -3,7 +3,6 @@ package repositorio.repositoriotransiente;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Cliente;
 import model.Produto;
 import repositorio.RepositorioDeProduto;
 

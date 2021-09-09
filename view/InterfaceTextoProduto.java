@@ -8,12 +8,12 @@ import repositorio.repositoriotransiente.RepositorioDeProdutoTransiente;
 
 public class InterfaceTextoProduto {
 	private Scanner scanner;
-	private RepositorioDeProdutoTransiente repositorio;
+	private RepositorioDeProduto repositorio;
 
 	public InterfaceTextoProduto(Scanner sc, RepositorioDeProduto repositorioDeProduto,
 			RepositorioDeEndereco repositorioDeEndereco) {
 		this.scanner = sc;
-		this.repositorio = repositorio;
+		this.repositorio = repositorioDeProduto;
 		
 	}
 
@@ -73,7 +73,7 @@ public class InterfaceTextoProduto {
 			
 		}while(repete);
 		 repete = true;
-
+		 
 	}
 
 	public void editarProduto() {
