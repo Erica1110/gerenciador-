@@ -28,8 +28,8 @@ public class InterfaceTexto {
 	public void iniciarGerenciamente(){
 		int opcao=0;
 		do {
-			System.out.println("===== Menu =====");
-			System.out.println("---Digite o menu desejado---");
+			System.out.println("Menu");
+			System.out.println("Digite o menu desejado");
 			System.out.println("1-Clientes");
 			System.out.println("2-Produtos");
 			System.out.println("3-Endereço");
@@ -45,8 +45,11 @@ public class InterfaceTexto {
 				case 3:
 					this.interfaceTextoEndereco.gerenciarEndereco();
 			}
+			System.out.println("Opção não encontrada, digite uma opção existente!");
+			System.out.println("");
+		}while(opcao!=4);{
 			
-		}while(opcao!=3);
+		}
 		System.out.println("Obrigado por usar nosso sistema, volte sempre!");
 	}
 	
