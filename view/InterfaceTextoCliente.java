@@ -108,16 +108,11 @@ public class InterfaceTextoCliente {
 	}
 
 	public void exibirTodos() {
-		String confirmar;
 		List<Cliente> clientes = this.repositorio.getAll();
 		for (int i = 0; i < clientes.size(); i++) {
 			Cliente clienteSelecionado = clientes.get(i);
 			System.out.println("Id=" + clienteSelecionado.getid()+", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+", numero de telefone="+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
-			System.out.println("Digite 'Sair' para voltar voltar ao Menu de clientes.");
-			confirmar=this.scanner.nextLine();
-			if(confirmar.equalsIgnoreCase("Sair")) {
-				
-			}
+			
 		}
 
 	}
