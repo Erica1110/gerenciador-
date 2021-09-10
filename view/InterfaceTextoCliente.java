@@ -10,7 +10,6 @@ import repositorio.RepositorioDeEndereco;
 import repositorio.RepositorioDeProduto;
 
 public class InterfaceTextoCliente {
-	private static final Cliente Cliente = null;
 	private Scanner scanner;
 	private RepositorioDeCliente repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
@@ -111,7 +110,7 @@ public class InterfaceTextoCliente {
 		List<Cliente> clientes = this.repositorio.getAll();
 		for (int i = 0; i < clientes.size(); i++) {
 			Cliente clienteSelecionado = clientes.get(i);
-			System.out.println("Id=" + clienteSelecionado.getid()+", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+", numero de telefone="+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
+			System.out.println("Id=" + clienteSelecionado.getId()+", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+", numero de telefone="+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
 			
 		}
 
@@ -145,14 +144,15 @@ public class InterfaceTextoCliente {
 	}
 
 	public Cliente selecionarCliente() {
-		int id = 0;
+		int id=0;
 		boolean repete = false;
-		Cliente clienteSelecionado = null;
+		Cliente clienteSelecionado =null;
 		do {
-			System.out.println("Digite o id");
+			System.out.println("Digite o id do seu cliente");
 			id = this.scanner.nextInt();
+			clienteSelecionado= this.repositorio.get(id);
 			if (clienteSelecionado != null) {
-				System.out.println(clienteSelecionado);
+				System.out.println(clienteSelecionado.toString());
 			}
 			if (clienteSelecionado == null) {
 				System.out.println("Digite 'sim' para procurar novamente");

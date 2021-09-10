@@ -1,7 +1,7 @@
 package model;
 
 public class Cliente {
-	private int id;
+	private  int id= 0;
 	private long cpf;
 	private String nome;
 	private long numeroDeTelefone;
@@ -22,7 +22,7 @@ public class Cliente {
 
 	}
 
-	public int getid() {
+	public  int getId() {
 		return id;
 	}
 
@@ -40,6 +40,13 @@ public class Cliente {
 
 	public Endereco getEndereco() {
 		return endereco;
+		
+	}
+	public String  toString() {
+		String resultado;
+		resultado= "id="+id+", cpf="+ cpf +", nome="+ nome +
+				"numero do telefone="+ numeroDeTelefone + endereco.toString();
+		return resultado;
 		
 	}
 }

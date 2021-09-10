@@ -1,7 +1,6 @@
 package model;
 
 public class Endereco{
-	private int id= 0;
 	private String cidade;
 	private int numeroDaCasa;
 	private String bairro;
@@ -26,5 +25,7 @@ public class Endereco{
 	public String getBairro() {
 		return bairro;
 	}
-	
+	public String toString() {
+		return "cidade="+cidade+", numero da casa"+
+	}
 }

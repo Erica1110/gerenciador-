@@ -39,7 +39,7 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 	public Cliente get(int id) {
 		for(int i=0; i<clientes.size() ; i++){
 			Cliente clienteSelecionado= this.clientes.get(i);
-			if (id==clienteSelecionado.getid()) {
+			if (id==clienteSelecionado.getId()) {
 				return clienteSelecionado;
 			}
 				

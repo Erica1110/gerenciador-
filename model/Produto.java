@@ -1,7 +1,7 @@
 package model;
 
 public class Produto {
-	private int idDoProduto;
+	private int id;
 	private String nome;
 	private int valor;
 
@@ -12,7 +12,12 @@ public class Produto {
 
 	public int getid() {
 
-		return 0;
+		return id;
 	}
-
+	public String getNome() {
+		return nome;
+	}
+	public int getValor() {
+		return valor;
+	}
 }
