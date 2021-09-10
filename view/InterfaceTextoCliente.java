@@ -60,6 +60,7 @@ public class InterfaceTextoCliente {
 
 	public void cadastrar() {
 		String nome = null;
+		int id = 0;
 		long cpf = 0;
 		long numeroDoTelefone = 0;
 		Endereco endereco;
@@ -78,10 +79,10 @@ public class InterfaceTextoCliente {
 			
 			System.out.println("nome=" + nome + ", cpf=" + cpf + ", telefone=" + numeroDoTelefone);
 			System.out.println("");
-			System.out.println("Digite 'confirmar' para continuar ou 'editar' para editar os dados");
+			System.out.println("Digite 'sim' para continuar ou 'não' para editar os dados");
 			String confirmacao = this.scanner.nextLine();
 			
-			if (confirmacao.equalsIgnoreCase("confirmar")) {
+			if (confirmacao.equalsIgnoreCase("sim")) {
 
 				repete = false;
 			}
@@ -98,7 +99,7 @@ public class InterfaceTextoCliente {
 		{
 			endereco = this.interfaceTextoEndereco.cadastrarEndereco();
 			if (endereco != null) {
-				Cliente cliente = new Cliente(cpf, nome, numeroDoTelefone, endereco);
+				Cliente cliente = new Cliente( id, cpf, nome, numeroDoTelefone, endereco);
 				repositorio.add(cliente);
 			}
 
@@ -111,7 +112,7 @@ public class InterfaceTextoCliente {
 		List<Cliente> clientes = this.repositorio.getAll();
 		for (int i = 0; i < clientes.size(); i++) {
 			Cliente clienteSelecionado = clientes.get(i);
-			System.out.println("Id=" + clienteSelecionado+ ", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+", numero de telefone="+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
+			System.out.println("Id=" + clienteSelecionado.getid()+", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+", numero de telefone="+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
 			System.out.println("Digite 'Sair' para voltar voltar ao Menu de clientes.");
 			confirmar=this.scanner.nextLine();
 			if(confirmar.equalsIgnoreCase("Sair")) {

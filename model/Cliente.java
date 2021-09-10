@@ -9,7 +9,7 @@ public class Cliente {
 
 	private static int numeroDeClientes = 0;
 
-	public Cliente(long cpf, String nome, long numeroDeTelefone, Endereco endereco) {
+	public Cliente(int id, long cpf, String nome, long numeroDeTelefone, Endereco endereco) {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.numeroDeTelefone = numeroDeTelefone;
