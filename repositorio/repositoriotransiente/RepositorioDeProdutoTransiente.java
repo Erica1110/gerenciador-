@@ -18,12 +18,12 @@ public class RepositorioDeProdutoTransiente extends RepositorioDeProduto {
 
 	@Override
 	public void add(Produto produto) {
-
+		this.produto.add(produto);
 	}
 
 	@Override
 	public void delete(Produto produto) {
-		
+		this.produto.remove(produto);
 
 	}
 

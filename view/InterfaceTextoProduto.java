@@ -14,7 +14,7 @@ public class InterfaceTextoProduto {
 			RepositorioDeEndereco repositorioDeEndereco) {
 		this.scanner = sc;
 		this.repositorio = repositorioDeProduto;
-		
+
 	}
 
 	public void gerenciarProduto() {
@@ -26,67 +26,99 @@ public class InterfaceTextoProduto {
 			System.out.println("3-Editar Produto");
 			System.out.println("4-Excluir Produtor");
 			System.out.println("5-Sair");
-			 
-			opcao=this.scanner.nextInt();
-			switch(opcao) {
-			
-			
+
+			opcao = this.scanner.nextInt();
+			switch (opcao) {
+
 			case 1:
 				this.cadastrarProduto();
 				break;
-				
+
 			case 2:
 				this.verProduto();
 				break;
 			case 3:
 				this.editarProduto();
 				break;
-		    }
-		}while(opcao!=5);
-		    	
-		    System.out.println("Opção não encontrada, digite uma opção existente");
-		    
-			
-		    
-			
-	 }
+			case 4:
+				this.excluirProdutos();
+			}
+
+		} while (opcao != 5);
+
+	}
 
 	public void cadastrarProduto() {
-		int valor;
+		float valor;
 		String nome;
-		boolean repete= false; 
+		boolean repete = false;
 		String confirmar;
+		this.scanner.nextLine();
 		do {
-			System.out.println("Digite O nome do produto");
-			nome=scanner.nextLine();
+			System.out.println("Digite o nome do produto");
+			nome = scanner.nextLine();
 			System.out.println("Digite o valor do produto");
-			valor=scanner.nextInt();
-			System.out.println("Os dados valor="+valor+", nome"+nome+" estão corretos?");
-			System.out.print("Digite sim ou não");
-			confirmar=scanner.nextLine();
-			Produto produto= new Produto (nome, valor);
+			valor = scanner.nextFloat();
+			this.scanner.nextLine();
+			System.out.println("Os dados valor=" + valor + ", nome=" + nome + " estão corretos?");
+			System.out.println("Digite sim ou não");
+			confirmar = scanner.nextLine();
+			Produto produto = new Produto(nome, valor);
 			repositorio.add(produto);
 			if (confirmar.equalsIgnoreCase("sim")) {
-				
-				System.out.print("Cadastro concluido com sucesso :)");
-				
-			}else {
+
+				System.out.println("Cadastro concluido com sucesso");
+
+			} else {
 				repete = true;
 			}
-			
-		}while(repete);
-		 repete = true;
-		 
+
+		} while (repete);
+		repete = true;
+
 	}
 
 	public void editarProduto() {
-     
+
 	}
 
 	public void verProduto() {
 
 	}
+
 	public void excluirProdutos() {
-		
+
+	}
+
+	public Produto selecionarProduto(){
+		int id = 0;
+		boolean repete= false;
+		Produto produtoSelecionado = null;
+		do {
+			System.out.println("Digite o id do seu cliente");
+			id = this.scanner.nextInt();
+			produtoSelecionado= this.repositorio.get(id);
+			if (produtoSelecionado != null) {
+				System.out.println(produtoSelecionado.toString());
+				
+			}
+			
+		if (produtoSelecionado == null) {
+			System.out.println("Produto não encontrado");
+			
+				
+			repete = true;
+
+		} else {
+			repete = false;
+
+		}
+
+		}while(repete);
+
+		return produtoSelecionado;
+
 	}
 }
+
+

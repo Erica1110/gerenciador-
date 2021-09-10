@@ -48,13 +48,11 @@ public class InterfaceTextoCliente {
 
 			case 4:
 				this.delete();
-				break;
-
-			
+				break;	
 			}
-
+			
 		} while (opcao != 5);
-		
+		 
 	}
 
 	public void cadastrar() {
@@ -113,15 +111,15 @@ public class InterfaceTextoCliente {
 			System.out.println("Id=" + clienteSelecionado.getId()+", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+", numero de telefone="+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
 			
 		}
-
+		this.scanner.nextLine();
 	}
-
+	
 	public Cliente editar() {
 		Cliente clienteSelecionado = this.selecionarCliente();
 		if (clienteSelecionado != null) {
 			System.out.println("O cliente que você procura é esse? digite sim ou não");
 			System.out.print(clienteSelecionado);
-			String confirmacao = this.scanner.nextLine();
+			String confirmacao = scanner.nextLine();
 			if (confirmacao.equalsIgnoreCase("sim")) {
 				cadastrar();
 			}
@@ -155,7 +153,7 @@ public class InterfaceTextoCliente {
 				System.out.println(clienteSelecionado.toString());
 			}
 			if (clienteSelecionado == null) {
-				System.out.println("Digite 'sim' para procurar novamente");
+				System.out.println("Cliente não encontrado");
 				repete = true;
 
 			} else {

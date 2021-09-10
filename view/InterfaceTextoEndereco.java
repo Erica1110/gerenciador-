@@ -33,7 +33,7 @@ public class InterfaceTextoEndereco {
 			case 3:
 				verTodos();
 			}
-
+		
 		} while (opcao != 4);
 
 	}
@@ -45,7 +45,7 @@ public class InterfaceTextoEndereco {
 		String bairro;
 		int numeroDaCasa;
 		System.out.println("Qual a sua cidade ?");
-	    cidade= scanner.nextLine();
+	    cidade=scanner.nextLine();
 	    System.out.println("Em qual bairro você mora ?");
 	    bairro=scanner.nextLine();	
 	    System.out.println("E qual o numero da sua casa ?");

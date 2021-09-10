@@ -29,13 +29,22 @@ public class Cliente {
 	public long getCpf() {
 		return cpf;
 	}
+	public void setCpf(long c) {
+		this.cpf = c;
+	}
 
 	public String getNome() {
 		return nome;
 	}
+	public void setNome(String n) {
+		this.nome = n;
+	}
 
 	public long getNumeroDeTelefone() {
 		return numeroDeTelefone;
+	}
+	public void setNumeroDeTelefone(long NumT) {
+		this.numeroDeTelefone = NumT;
 	}
 
 	public Endereco getEndereco() {
@@ -43,10 +52,7 @@ public class Cliente {
 		
 	}
 	public String  toString() {
-		String resultado;
-		resultado= "id="+id+", cpf="+ cpf +", nome="+ nome +
-				"numero do telefone="+ numeroDeTelefone + endereco.toString();
-		return resultado;
+		return "id="+id+", cpf="+ cpf +", nome="+ nome +"numero do telefone="+ numeroDeTelefone + endereco.toString();
 		
 	}
 }

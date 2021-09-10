@@ -13,7 +13,7 @@ public class Endereco{
 		
 	 
 	public int getid() {
-		
+	
 		return 0;
 	}
 	public String getCidade() {
@@ -26,6 +26,6 @@ public class Endereco{
 		return bairro;
 	}
 	public String toString() {
-		return "cidade="+cidade+", numero da casa"+
+		return "cidade="+cidade+", numero da casa"+numeroDaCasa+", bairro="+bairro;
 	}
 }
