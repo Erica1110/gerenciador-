@@ -18,7 +18,7 @@ public class RepositorioDeEnderecoTransiente extends RepositorioDeEndereco {
 
 	public Endereco get(int id) {
 		for (Endereco endereco : this.endereco) {
-			if (endereco.getid() == id) {
+			if (endereco.getId() == id) {
 				return endereco;
 			}
 

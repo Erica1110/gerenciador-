@@ -8,10 +8,13 @@ import repositorio.RepositorioDeEndereco;
 public class InterfaceTextoEndereco {
 	private Scanner scanner;
 	public RepositorioDeEndereco repositorio;
+	public InterfaceTextoCliente interfaceTextoCliente;
 
-	public InterfaceTextoEndereco(Scanner sc, RepositorioDeEndereco repositorio) {
+	public InterfaceTextoEndereco(Scanner sc, RepositorioDeEndereco repositorio,
+			InterfaceTextoCliente interfaceTextoCliente) {
 		this.scanner = sc;
 		this.repositorio = repositorio;
+
 	}
 
 	public void gerenciarEndereco() {
@@ -33,54 +36,128 @@ public class InterfaceTextoEndereco {
 			case 3:
 				excluirEndereco();
 			}
-		
+
 		} while (opcao != 4);
 
 	}
 
 	public Endereco cadastrarEndereco() {
+		int id = 0;
 		Endereco endereco = null;
 		boolean repete = false;
 		String cidade;
 		String bairro;
 		int numeroDaCasa;
 		System.out.println("Qual o nome da sua cidade ?");
-	    cidade=scanner.nextLine();
-	    System.out.println("Em qual bairro você mora ?");
-	    bairro=scanner.nextLine();	
-	    System.out.println("E qual o numero da sua casa ?");
-	    numeroDaCasa=scanner.nextInt();
-	    System.out.println("os dados cidade=" +cidade +", bairro=" + bairro +", numero da casa="+numeroDaCasa+" estão coretos?");
-	    System.out.println("");
-	    System.out.println("Os dados estão corretos? Se sim, escreva sim, e se estão errados escreva editar.");
+		cidade = scanner.nextLine();
+		System.out.println("Em qual bairro você mora ?");
+		bairro = scanner.nextLine();
+		System.out.println("E qual o numero da sua casa ?");
+		numeroDaCasa = scanner.nextInt();
+		System.out.println("os dados cidade=" + cidade + ", bairro=" + bairro + ", numero da casa=" + numeroDaCasa
+				+ " estão coretos?");
+		System.out.println("");
+		System.out.println("Os dados estão corretos? Se sim, escreva sim, e se estão errados escreva editar.");
 		do {
 
 			String confirmar = scanner.nextLine();
 
 			if (confirmar.equalsIgnoreCase("Sim")) {
-				endereco= new Endereco(cidade, numeroDaCasa, bairro);
+				endereco = new Endereco(id, cidade, numeroDaCasa, bairro);
 				repositorio.add(endereco);
-				
+
 				System.out.println("Processo concluido");
-		
+
 				repete = false;
-			}else {
-				 repete= true;
+			} else {
+				repete = true;
 			}
-			
-			
+
 		} while (repete);
 		return endereco;
-		
-		
 
 	}
 
 	public Endereco editar() {
-		return null;
+		boolean repete = false;
+		Endereco enderecoSelecionado = selecionarEndereco();
+		if (enderecoSelecionado != null) {
+			System.out.println("O endereço que você procura é esse? sim ou não?");
+			String confirmacao = scanner.nextLine();
+			if (confirmacao.equalsIgnoreCase("sim")) {
+				do {
+					System.out.println("Digite o nome da sua cidade");
+					enderecoSelecionado.setCidade(scanner.nextLine());
+
+					System.out.println("Digite o numero da sua casa");
+					enderecoSelecionado.setNumeroDaCasa(scanner.nextInt());
+					scanner.nextLine();
+					System.out.println("Digite o nome do bairro que você mora");
+					enderecoSelecionado.setBairro(scanner.nextLine());
+					System.out.println("Os dados estão corretos? sim ou não");
+					confirmacao = scanner.nextLine();
+					if (confirmacao.equalsIgnoreCase("sim")) {
+						System.out.println("Processo concluido");
+						scanner.nextLine();
+						repete = false;
+					} else {
+						repete = true;
+					}
+				} while (repete);
+
+			} else {
+				repete=true;
+
+			}
+
+		} else {
+			selecionarEndereco();
+		}
+
+		return enderecoSelecionado;
 	}
 
 	public Endereco excluirEndereco() {
+
+		Endereco enderecoSelecionado = selecionarEndereco();
+		System.out.println("O endereço que você procura é esse? sim ou não?");
+		String confirmacao = scanner.nextLine();
+		if (confirmacao.equalsIgnoreCase("sim")) {
+			System.out.println("Tem certeza que deseja deletar esse endereço? sim ou não?");
+			confirmacao = scanner.nextLine();
+			if (confirmacao.equalsIgnoreCase("sim")) {
+				repositorio.delete(enderecoSelecionado);
+				System.out.println("Endereço excluido!");
+
+			} else {
+				gerenciarEndereco();
+			}
+		} else {
+			selecionarEndereco();
+		}
+
 		return null;
+	}
+
+	public Endereco selecionarEndereco() {
+		int id = 0;
+		Endereco enderecoSelecionado = null;
+		boolean repete = false;
+		do {
+			System.out.println("Digite o id do endereço");
+			id = scanner.nextInt();
+			scanner.nextLine();
+			enderecoSelecionado = repositorio.get(id);
+			System.out.println(enderecoSelecionado);
+			if (enderecoSelecionado != null) {
+				System.out.print("");
+				repete = false;
+			} else {
+				System.out.println("Endereço não encontrado");
+				repete = true;
+			}
+		} while (repete);
+
+		return enderecoSelecionado;
 	}
 }

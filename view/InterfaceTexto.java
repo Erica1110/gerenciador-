@@ -16,7 +16,7 @@ public class InterfaceTexto {
 		this.scanner=new Scanner(System.in);
 		this.interfaceTextoCliente= new InterfaceTextoCliente(scanner, repositorioDeCliente, repositorioDeEndereco, repositorioDeProdutos);
 		this.interfaceTextoProduto= new InterfaceTextoProduto(scanner, repositorioDeProdutos, repositorioDeEndereco);
-		this.interfaceTextoEndereco= new InterfaceTextoEndereco(scanner, repositorioDeEndereco);
+		this.interfaceTextoEndereco= new InterfaceTextoEndereco(scanner, repositorioDeEndereco, interfaceTextoCliente);
 	}
 
 

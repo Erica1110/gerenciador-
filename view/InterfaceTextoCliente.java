@@ -13,12 +13,13 @@ public class InterfaceTextoCliente {
 	private Scanner scanner;
 	private RepositorioDeCliente repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
+	private InterfaceTextoCliente interfaceTextoCliente;
 
 	public InterfaceTextoCliente(Scanner sc, RepositorioDeCliente repositorioDeCliente,
 			RepositorioDeEndereco repositorioDeEndereco, RepositorioDeProduto repositorioDeProduto) {
 		this.scanner = sc;
 		this.repositorio = repositorioDeCliente;
-		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco);
+		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco, interfaceTextoCliente);
 	}
 
 	public void gerenciarClientes() {
@@ -111,54 +112,49 @@ public class InterfaceTextoCliente {
 			System.out.println(clienteSelecionado);
 
 		}
-		this.scanner.nextLine();
+
 	}
 
 	public Cliente editar() {
-		String confirmar; 
-		boolean repete= false;
+		String confirmar;
+		boolean repete = false;
 		Cliente clienteSelecionado = this.selecionarCliente();
 		if (clienteSelecionado != null) {
 			System.out.println("O cliente que você procura é esse? digite sim ou não");
 			System.out.println(clienteSelecionado);
 			String confirmacao = scanner.nextLine();
 			if (confirmacao.equalsIgnoreCase("sim")) {
-				
-				
+
 				do {
-					
+
 					System.out.println("Digite o seu nome");
 					clienteSelecionado.setNome(scanner.nextLine());
-					
+
 					System.out.println("Digite o numero do seu telefone");
 					clienteSelecionado.setNumeroDeTelefone(scanner.nextLong());
-					this.scanner.nextLine();
-					System.out.println("Digite sua cidade");
-					clienteSelecionado.getEndereco().setCidade(scanner.nextLine());
-					
-					System.out.println("Digite o numero da sua casa");
-					clienteSelecionado.getEndereco().setNumeroDaCasa(scanner.nextInt());
-					this.scanner.nextLine();
-					System.out.println("Digite o nome do bairro que você mora");
-					clienteSelecionado.getEndereco().setBairro(scanner.nextLine());
-					
+					scanner.nextLine();
+
 					System.out.println("Os dados estão corretos, se estão escreva 'sim' se não escreva 'não'.");
 					System.out.println("");
 					System.out.println(clienteSelecionado);
-					confirmar=scanner.nextLine();
-					if(confirmar.equalsIgnoreCase("sim")) {
-					 System.out.println("Processo concluido");
-						
-					}else {
+					confirmar = scanner.nextLine();
+
+					if (confirmar.equalsIgnoreCase("sim")) {
+						System.out.println("Processo concluido");
+						scanner.nextLine();
+						repete = false;
+
+					} else {
 						repete = true;
 					}
-				}while(repete);
-				
-				
+				} while (repete);
+
 			} else {
-				 selecionarCliente();
+				repete = true;
 			}
 
+		} else {
+			selecionarCliente();
 		}
 		return clienteSelecionado;
 	}
@@ -166,12 +162,21 @@ public class InterfaceTextoCliente {
 	private Cliente delete() {
 		Cliente clienteSelecionado = this.selecionarCliente();
 		if (clienteSelecionado != null) {
-			System.out.println("Tem certeza que deseja continuar? Digite 'sim' para deletar.");
+			System.out.println("O Cliente que você quer excluir é esse ? sim ou não?");
+			System.out.println(clienteSelecionado);
 			String confirmacao = this.scanner.nextLine();
 			if (confirmacao.equalsIgnoreCase("sim")) {
-				this.repositorio.delete(clienteSelecionado);
+				System.out.println("Tem certeza que deseja continuar? Digite 'sim' para deletar.");
+				confirmacao = scanner.nextLine();
+				if (confirmacao.equalsIgnoreCase("sim")) {
+					this.repositorio.delete(clienteSelecionado);
+					System.out.println("Cliente excluido!");
+				}
+
 			}
 
+		} else {
+			selecionarCliente();
 		}
 		return null;
 	}
@@ -182,19 +187,17 @@ public class InterfaceTextoCliente {
 		Cliente clienteSelecionado = null;
 		do {
 			System.out.println("Digite o id do seu cliente");
-			id = this.scanner.nextInt();
+			id = scanner.nextInt();
 			clienteSelecionado = this.repositorio.get(id);
 			this.scanner.nextLine();
 			if (clienteSelecionado != null) {
 				System.out.print("");
-			
+				scanner.nextLine();
+				repete= false;
 			}
 			if (clienteSelecionado == null) {
 				System.out.println("Cliente não encontrado");
 				repete = true;
-
-			} else {
-				repete = false;
 
 			}
 

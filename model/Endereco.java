@@ -1,20 +1,25 @@
 package model;
 
 public class Endereco{
+	private int id=0;
 	private String cidade;
 	private int numeroDaCasa;
 	private String bairro;
-	
-	public Endereco (String cidade, int numeroDaCasa, String bairro) {
+	private static int  numeroDeEnderecos=0;
+	public Endereco (int id,String cidade, int numeroDaCasa, String bairro) {
 		this.cidade= cidade;
 		this.numeroDaCasa= numeroDaCasa;
 		this.bairro=bairro;
+		this.id=gerarId();
 	}
 		
 	 
-	public int getid() {
+	public static int gerarId() {
+		return numeroDeEnderecos++;
+	}
+	public int getId() {
 	
-		return 0;
+		return id;
 	}
 	public String getCidade() {
 		return cidade;
@@ -36,6 +41,6 @@ public class Endereco{
 		this.bairro=b;
 	}
 	public String toString() {
-		return ", cidade="+cidade+", numero da casa="+numeroDaCasa+", bairro="+bairro;
+		return "id"+id+", cidade="+cidade+", numero da casa="+numeroDaCasa+", bairro="+bairro;
 	}
 }
