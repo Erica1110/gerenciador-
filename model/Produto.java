@@ -13,7 +13,7 @@ public class Produto {
 		this.id = Produto.gerarId();
 	}
 	private  static int gerarId() {
-		return numeroDeProdutos;
+		return numeroDeProdutos++;
 	}
 
 	public int getid() {
@@ -36,5 +36,8 @@ public class Produto {
 	public void setValor(float v) {
 		this.valor =  v;
 		
+	}
+	public String toString(){
+		return "id="+id+", nome="+nome+", valor="+valor;
 	}
 }

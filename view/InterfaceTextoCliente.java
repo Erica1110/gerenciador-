@@ -24,13 +24,13 @@ public class InterfaceTextoCliente {
 	public void gerenciarClientes() {
 		int opcao = 0;
 		do {
-			System.out.println("Digite o menu");
+			System.out.println("Selecione a opção desejada");
 			System.out.println("1-Cadastro");
 			System.out.println("2-Exibir todos");
 			System.out.println("3-Editar");
 			System.out.println("4-Delete");
 			System.out.println("5-Sair");
-		
+
 			opcao = scanner.nextInt();
 			scanner.nextLine();
 			switch (opcao) {
@@ -48,11 +48,11 @@ public class InterfaceTextoCliente {
 
 			case 4:
 				this.delete();
-				break;	
+				break;
 			}
-			
+
 		} while (opcao != 5);
-		 
+
 	}
 
 	public void cadastrar() {
@@ -69,16 +69,16 @@ public class InterfaceTextoCliente {
 			nome = this.scanner.nextLine();
 			System.out.println("Digite seu CPF");
 			cpf = this.scanner.nextLong();
-			
+
 			System.out.println("Digite seu telefone");
 			numeroDoTelefone = this.scanner.nextLong();
 			this.scanner.nextLine();
-			
+
 			System.out.println("nome=" + nome + ", cpf=" + cpf + ", telefone=" + numeroDoTelefone);
 			System.out.println("");
 			System.out.println("Digite 'sim' para continuar ou 'não' para editar os dados");
 			String confirmacao = this.scanner.nextLine();
-			
+
 			if (confirmacao.equalsIgnoreCase("sim")) {
 
 				repete = false;
@@ -96,7 +96,7 @@ public class InterfaceTextoCliente {
 		{
 			endereco = this.interfaceTextoEndereco.cadastrarEndereco();
 			if (endereco != null) {
-				Cliente cliente = new Cliente( id, cpf, nome, numeroDoTelefone, endereco);
+				Cliente cliente = new Cliente(id, cpf, nome, numeroDoTelefone, endereco);
 				repositorio.add(cliente);
 			}
 
@@ -108,20 +108,55 @@ public class InterfaceTextoCliente {
 		List<Cliente> clientes = this.repositorio.getAll();
 		for (int i = 0; i < clientes.size(); i++) {
 			Cliente clienteSelecionado = clientes.get(i);
-			System.out.println("Id=" + clienteSelecionado.getId()+", cpf="+clienteSelecionado.getCpf()+", nome="+clienteSelecionado.getNome()+", numero de telefone="+clienteSelecionado.getNumeroDeTelefone()+", cidade="+clienteSelecionado.getEndereco().getCidade()+", bairro="+clienteSelecionado.getEndereco().getBairro());
-			
+			System.out.println(clienteSelecionado);
+
 		}
 		this.scanner.nextLine();
 	}
-	
+
 	public Cliente editar() {
+		String confirmar; 
+		boolean repete= false;
 		Cliente clienteSelecionado = this.selecionarCliente();
 		if (clienteSelecionado != null) {
 			System.out.println("O cliente que você procura é esse? digite sim ou não");
-			System.out.print(clienteSelecionado);
+			System.out.println(clienteSelecionado);
 			String confirmacao = scanner.nextLine();
 			if (confirmacao.equalsIgnoreCase("sim")) {
-				cadastrar();
+				
+				
+				do {
+					
+					System.out.println("Digite o seu nome");
+					clienteSelecionado.setNome(scanner.nextLine());
+					
+					System.out.println("Digite o numero do seu telefone");
+					clienteSelecionado.setNumeroDeTelefone(scanner.nextLong());
+					this.scanner.nextLine();
+					System.out.println("Digite sua cidade");
+					clienteSelecionado.getEndereco().setCidade(scanner.nextLine());
+					
+					System.out.println("Digite o numero da sua casa");
+					clienteSelecionado.getEndereco().setNumeroDaCasa(scanner.nextInt());
+					this.scanner.nextLine();
+					System.out.println("Digite o nome do bairro que você mora");
+					clienteSelecionado.getEndereco().setBairro(scanner.nextLine());
+					
+					System.out.println("Os dados estão corretos, se estão escreva 'sim' se não escreva 'não'.");
+					System.out.println("");
+					System.out.println(clienteSelecionado);
+					confirmar=scanner.nextLine();
+					if(confirmar.equalsIgnoreCase("sim")) {
+					 System.out.println("Processo concluido");
+						
+					}else {
+						repete = true;
+					}
+				}while(repete);
+				
+				
+			} else {
+				 selecionarCliente();
 			}
 
 		}
@@ -142,15 +177,17 @@ public class InterfaceTextoCliente {
 	}
 
 	public Cliente selecionarCliente() {
-		int id=0;
+		int id = 0;
 		boolean repete = false;
-		Cliente clienteSelecionado =null;
+		Cliente clienteSelecionado = null;
 		do {
 			System.out.println("Digite o id do seu cliente");
 			id = this.scanner.nextInt();
-			clienteSelecionado= this.repositorio.get(id);
+			clienteSelecionado = this.repositorio.get(id);
+			this.scanner.nextLine();
 			if (clienteSelecionado != null) {
-				System.out.println(clienteSelecionado.toString());
+				System.out.print("");
+			
 			}
 			if (clienteSelecionado == null) {
 				System.out.println("Cliente não encontrado");

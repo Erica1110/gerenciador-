@@ -16,11 +16,11 @@ public class InterfaceTextoEndereco {
 
 	public void gerenciarEndereco() {
 		int opcao = 0;
-		System.out.println("Digite a opção desejada");
 		do {
+			System.out.println("Selecione a opção desejada");
 			System.out.println("1-Cadastrar");
 			System.out.println("2-Editar");
-			System.out.println("3-Ver todos");
+			System.out.println("3-Deletar endereco");
 			System.out.println("4-Sair");
 			opcao = this.scanner.nextInt();
 			this.scanner.nextLine();
@@ -31,7 +31,7 @@ public class InterfaceTextoEndereco {
 			case 2:
 				editar();
 			case 3:
-				verTodos();
+				excluirEndereco();
 			}
 		
 		} while (opcao != 4);
@@ -44,13 +44,14 @@ public class InterfaceTextoEndereco {
 		String cidade;
 		String bairro;
 		int numeroDaCasa;
-		System.out.println("Qual a sua cidade ?");
+		System.out.println("Qual o nome da sua cidade ?");
 	    cidade=scanner.nextLine();
 	    System.out.println("Em qual bairro você mora ?");
 	    bairro=scanner.nextLine();	
 	    System.out.println("E qual o numero da sua casa ?");
 	    numeroDaCasa=scanner.nextInt();
-	    System.out.println("os dados cidade " +cidade +", bairro " + bairro +", numero da casa "+numeroDaCasa+" estão coretos?");
+	    System.out.println("os dados cidade=" +cidade +", bairro=" + bairro +", numero da casa="+numeroDaCasa+" estão coretos?");
+	    System.out.println("");
 	    System.out.println("Os dados estão corretos? Se sim, escreva sim, e se estão errados escreva editar.");
 		do {
 
@@ -77,10 +78,9 @@ public class InterfaceTextoEndereco {
 
 	public Endereco editar() {
 		return null;
-
 	}
 
-	public Endereco verTodos() {
+	public Endereco excluirEndereco() {
 		return null;
 	}
 }
