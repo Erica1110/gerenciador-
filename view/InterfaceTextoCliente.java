@@ -116,6 +116,7 @@ public class InterfaceTextoCliente {
 	}
 
 	public Cliente editar() {
+
 		String confirmar;
 		boolean repete = false;
 		Cliente clienteSelecionado = this.selecionarCliente();
@@ -149,9 +150,7 @@ public class InterfaceTextoCliente {
 					}
 				} while (repete);
 
-			} else {
-				repete = true;
-			}
+			} 
 
 		} else {
 			selecionarCliente();
@@ -162,8 +161,6 @@ public class InterfaceTextoCliente {
 	private Cliente delete() {
 		Cliente clienteSelecionado = this.selecionarCliente();
 		if (clienteSelecionado != null) {
-			System.out.println("O Cliente que você quer excluir é esse ? sim ou não?");
-			System.out.println(clienteSelecionado);
 			String confirmacao = this.scanner.nextLine();
 			if (confirmacao.equalsIgnoreCase("sim")) {
 				System.out.println("Tem certeza que deseja continuar? Digite 'sim' para deletar.");
@@ -184,18 +181,27 @@ public class InterfaceTextoCliente {
 	public Cliente selecionarCliente() {
 		int id = 0;
 		boolean repete = false;
+		String  confirmar;
 		Cliente clienteSelecionado = null;
 		do {
 			System.out.println("Digite o id do seu cliente");
-			id = scanner.nextInt();
+			id = this.scanner.nextInt();
+
 			clienteSelecionado = this.repositorio.get(id);
-			this.scanner.nextLine();
+
 			if (clienteSelecionado != null) {
-				System.out.print("");
-				scanner.nextLine();
-				repete= false;
-			}
-			if (clienteSelecionado == null) {
+				System.out.println(clienteSelecionado);
+				System.out.print("O cliente que você procura é esse? sim ou não?");
+				confirmar=scanner.nextLine();
+				if(confirmar.equalsIgnoreCase("sim")) {
+					scanner.nextLine();
+					repete = false;
+					
+				}else {
+					repete = true;
+				}
+				
+			}if (clienteSelecionado == null) {
 				System.out.println("Cliente não encontrado");
 				repete = true;
 

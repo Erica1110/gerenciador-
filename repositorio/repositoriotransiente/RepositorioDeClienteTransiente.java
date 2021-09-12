@@ -33,19 +33,11 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 		return clientes;
 	}
 
-
-
 	@Override
 	public Cliente get(int id) {
-		for(int i=0; i<clientes.size() ; i++){
-			Cliente clienteSelecionado= this.clientes.get(i);
-			if (id==clienteSelecionado.getId()) {
-				return clienteSelecionado;
-			}
-				
-		}
 		
-		throw new IllegalArgumentException("Cliente não encontrado");
+		return null;
 	}
+
 	
 }

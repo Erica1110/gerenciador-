@@ -68,7 +68,7 @@ public class InterfaceTextoProduto {
 			if (confirmar.equalsIgnoreCase("sim")) {
 
 				System.out.println("Cadastro concluido com sucesso");
-				
+
 			} else {
 				repete = true;
 			}
@@ -81,50 +81,56 @@ public class InterfaceTextoProduto {
 	public void editarProduto() {
 
 	}
+
 	public void exibirTodos() {
-		
+
 	}
 
 	public void verProduto() {
-		Produto produtoSelecionado= selecionarProduto();
+		Produto produtoSelecionado = selecionarProduto();
 		System.out.println(produtoSelecionado);
 
 	}
 
 	public void excluirProdutos() {
+		Produto produtoSelecionado = selecionarProduto();
+		System.out.println(produtoSelecionado);
+		System.out.println("O produdo que você quer excluir é esse? sim ou não?");
 
 	}
 
-	public Produto selecionarProduto(){
+	public Produto selecionarProduto() {
 		int id = 0;
-		boolean repete= false;
+		boolean repete = false;
 		Produto produtoSelecionado = null;
+		String confirmar;
 		do {
 			System.out.println("Digite o id do seu cliente");
 			id = this.scanner.nextInt();
-			produtoSelecionado= this.repositorio.get(id);
+			produtoSelecionado = this.repositorio.get(id);
 			if (produtoSelecionado != null) {
-				System.out.println(produtoSelecionado.toString());
-				
+				System.out.println(produtoSelecionado);
+				System.out.println("O produto que você procura é esse? sim ou não?");
+				confirmar=scanner.nextLine();
+				if(confirmar.equalsIgnoreCase("sim")) {
+					return produtoSelecionado;
+					
+				}
 			}
-			
-		if (produtoSelecionado == null) {
-			System.out.println("Produto não encontrado");
-		
-			
-				
-			repete = true;
 
-		} else {
-			repete = false;
+			if (produtoSelecionado == null) {
+				System.out.println("Produto não encontrado");
 
-		}
+				repete = true;
 
-		}while(repete);
+			} else {
+				repete = false;
+
+			}
+
+		} while (repete);
 
 		return produtoSelecionado;
 
 	}
 }
-
-
