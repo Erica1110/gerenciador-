@@ -33,8 +33,10 @@ public class InterfaceTextoEndereco {
 				break;
 			case 2:
 				editar();
+				break;
 			case 3:
 				excluirEndereco();
+				break;
 			}
 
 		} while (opcao != 4);
@@ -57,13 +59,14 @@ public class InterfaceTextoEndereco {
 				+ " estão coretos?");
 		System.out.println("");
 		System.out.println("Os dados estão corretos? Se sim, escreva sim, e se estão errados escreva editar.");
+		Endereco endereco = null;
 		do {
 
 			String confirmar = scanner.nextLine();
 
 			if (confirmar.equalsIgnoreCase("Sim")) {
-				
-				Endereco endereco = new Endereco(id, cidade, numeroDaCasa, bairro);
+
+				endereco = new Endereco(id, cidade, numeroDaCasa, bairro);
 				repositorio.add(endereco);
 
 				System.out.println("Processo concluido");
@@ -74,8 +77,8 @@ public class InterfaceTextoEndereco {
 			}
 
 		} while (repete);
-		
-		return null;
+
+		return endereco;
 	}
 
 	public Endereco editar() {
@@ -83,31 +86,29 @@ public class InterfaceTextoEndereco {
 		boolean repete = false;
 		Endereco enderecoSelecionado = selecionarEndereco();
 
-				do {
-					System.out.println("Digite o nome da sua cidade");
-					enderecoSelecionado.setCidade(scanner.nextLine());
+		do {
+			System.out.println("Digite o nome da sua cidade");
+			enderecoSelecionado.setCidade(scanner.nextLine());
 
-					System.out.println("Digite o numero da sua casa");
-					enderecoSelecionado.setNumeroDaCasa(scanner.nextInt());
-					scanner.nextLine();
+			System.out.println("Digite o numero da sua casa");
+			enderecoSelecionado.setNumeroDaCasa(scanner.nextInt());
+			scanner.nextLine();
 
-					System.out.println("Digite o nome do bairro que você mora");
-					enderecoSelecionado.setBairro(scanner.nextLine());
+			System.out.println("Digite o nome do bairro que você mora");
+			enderecoSelecionado.setBairro(scanner.nextLine());
 
-					System.out.println("Os dados estão corretos? sim ou não");
-					confirmar = scanner.nextLine();
+			System.out.println("Os dados estão corretos? sim ou não");
+			confirmar = scanner.nextLine();
 
-					if (confirmar.equalsIgnoreCase("sim")) {
-						System.out.println("Processo concluido");
-						scanner.nextLine();
-						repete = false;
+			if (confirmar.equalsIgnoreCase("sim")) {
+				System.out.println("Processo concluido");
+				scanner.nextLine();
+				repete = false;
 
-					} else {
-						repete = true;
-					}
-				} while (repete);
-
-				
+			} else {
+				repete = true;
+			}
+		} while (repete);
 
 		return enderecoSelecionado;
 	}
@@ -115,20 +116,15 @@ public class InterfaceTextoEndereco {
 	public Endereco excluirEndereco() {
 
 		Endereco enderecoSelecionado = selecionarEndereco();
-		System.out.println("O endereço que você procura é esse? sim ou não?");
+
+		System.out.println("Tem certeza que deseja deletar esse endereço? sim ou não?");
 		String confirmacao = scanner.nextLine();
 		if (confirmacao.equalsIgnoreCase("sim")) {
-			System.out.println("Tem certeza que deseja deletar esse endereço? sim ou não?");
-			confirmacao = scanner.nextLine();
-			if (confirmacao.equalsIgnoreCase("sim")) {
-				repositorio.delete(enderecoSelecionado);
-				System.out.println("Endereço excluido!");
+			repositorio.delete(enderecoSelecionado);
+			System.out.println("Endereço excluido!");
 
-			} else {
-				gerenciarEndereco();
-			}
 		} else {
-			selecionarEndereco();
+			gerenciarEndereco();
 		}
 
 		return null;
@@ -144,16 +140,16 @@ public class InterfaceTextoEndereco {
 			id = scanner.nextInt();
 			scanner.nextLine();
 			enderecoSelecionado = repositorio.get(id);
-			
+
 			if (enderecoSelecionado != null) {
 				System.out.println(enderecoSelecionado);
 				System.out.println("O endereço que você está procurando é esse? sim ou não?");
-				confirmar=scanner.nextLine();
-				if(confirmar.equalsIgnoreCase("sim")) {
-					scanner.nextLine();
+				confirmar = scanner.nextLine();
+				if (confirmar.equalsIgnoreCase("sim")) {
+
 					repete = false;
 				}
-				
+
 			}
 			if (enderecoSelecionado == null) {
 				System.out.println("Endereço não encontrado");
@@ -161,6 +157,6 @@ public class InterfaceTextoEndereco {
 			}
 		} while (repete);
 
-	return enderecoSelecionado;
+		return enderecoSelecionado;
 	}
 }

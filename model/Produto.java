@@ -16,7 +16,7 @@ public class Produto {
 		return numeroDeProdutos++;
 	}
 
-	public int getid() {
+	public int getId() {
 
 		return id;
 	}

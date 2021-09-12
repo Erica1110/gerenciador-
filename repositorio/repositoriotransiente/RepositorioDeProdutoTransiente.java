@@ -33,12 +33,12 @@ public class RepositorioDeProdutoTransiente extends RepositorioDeProduto {
 	}
 	
 	public Produto get(int id) {
-		for(int i=0; i<produto.size() ; i++){
-			Produto produtoSelecionado= this.produto.get(i);
-			if (id==produtoSelecionado.getid()) {
-				return produtoSelecionado;
+		for(Produto produto:this.produto){
+			if(produto.getId()==id) {
+				return produto;
 			}
-		}
+			}
+		
 		throw new RuntimeException("Produto não encontrado."); 
 	}
 }

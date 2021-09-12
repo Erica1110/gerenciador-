@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Cliente;
+import model.Endereco;
 import repositorio.RepositorioDeCliente;
 
 public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
@@ -35,8 +36,13 @@ public class RepositorioDeClienteTransiente extends RepositorioDeCliente {
 
 	@Override
 	public Cliente get(int id) {
+		for(Cliente cliente : this.clientes) {
+			if(cliente.getId()==id) {
+				return cliente;	
+			}
+		}
 		
-		return null;
+		throw new RuntimeException("Cliente não encontrado.");
 	}
 
 	

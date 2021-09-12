@@ -116,92 +116,82 @@ public class InterfaceTextoCliente {
 	}
 
 	public Cliente editar() {
-
 		String confirmar;
 		boolean repete = false;
 		Cliente clienteSelecionado = this.selecionarCliente();
-		if (clienteSelecionado != null) {
-			System.out.println("O cliente que você procura é esse? digite sim ou não");
+
+		do {
+
+			System.out.println("Digite o seu nome");
+			clienteSelecionado.setNome(scanner.nextLine());
+
+			System.out.println("Digite o numero do seu telefone");
+			clienteSelecionado.setNumeroDeTelefone(scanner.nextLong());
+			scanner.nextLine();
+
+			System.out.println("Os dados estão corretos, se estão escreva 'sim' se não escreva 'não'.");
+			System.out.println("");
 			System.out.println(clienteSelecionado);
-			String confirmacao = scanner.nextLine();
-			if (confirmacao.equalsIgnoreCase("sim")) {
+			confirmar = scanner.nextLine();
 
-				do {
+			if (confirmar.equalsIgnoreCase("sim")) {
+				System.out.println("Processo concluido");
+				scanner.nextLine();
+				repete = false;
 
-					System.out.println("Digite o seu nome");
-					clienteSelecionado.setNome(scanner.nextLine());
+			} else {
+				repete = true;
+			}
+		} while (repete);
 
-					System.out.println("Digite o numero do seu telefone");
-					clienteSelecionado.setNumeroDeTelefone(scanner.nextLong());
-					scanner.nextLine();
-
-					System.out.println("Os dados estão corretos, se estão escreva 'sim' se não escreva 'não'.");
-					System.out.println("");
-					System.out.println(clienteSelecionado);
-					confirmar = scanner.nextLine();
-
-					if (confirmar.equalsIgnoreCase("sim")) {
-						System.out.println("Processo concluido");
-						scanner.nextLine();
-						repete = false;
-
-					} else {
-						repete = true;
-					}
-				} while (repete);
-
-			} 
-
-		} else {
-			selecionarCliente();
-		}
 		return clienteSelecionado;
 	}
 
 	private Cliente delete() {
-		Cliente clienteSelecionado = this.selecionarCliente();
-		if (clienteSelecionado != null) {
-			String confirmacao = this.scanner.nextLine();
-			if (confirmacao.equalsIgnoreCase("sim")) {
-				System.out.println("Tem certeza que deseja continuar? Digite 'sim' para deletar.");
-				confirmacao = scanner.nextLine();
-				if (confirmacao.equalsIgnoreCase("sim")) {
-					this.repositorio.delete(clienteSelecionado);
-					System.out.println("Cliente excluido!");
-				}
 
-			}
+		Cliente clienteSelecionado = this.selecionarCliente();
+
+		System.out.println("Tem certeza que deseja continuar? Digite 'sim' para deletar.");
+		String confirmacao = scanner.nextLine();
+
+		if (confirmacao.equalsIgnoreCase("sim")) {
+
+			this.repositorio.delete(clienteSelecionado);
+			System.out.println("Cliente excluido!");
 
 		} else {
-			selecionarCliente();
+			System.out.println("Cliente não excluido");
+
 		}
 		return null;
+
 	}
 
 	public Cliente selecionarCliente() {
 		int id = 0;
 		boolean repete = false;
-		String  confirmar;
+		String confirmar;
 		Cliente clienteSelecionado = null;
 		do {
 			System.out.println("Digite o id do seu cliente");
-			id = this.scanner.nextInt();
-
-			clienteSelecionado = this.repositorio.get(id);
+			id = scanner.nextInt();
+			scanner.nextLine();
+			clienteSelecionado = repositorio.get(id);
 
 			if (clienteSelecionado != null) {
 				System.out.println(clienteSelecionado);
-				System.out.print("O cliente que você procura é esse? sim ou não?");
-				confirmar=scanner.nextLine();
-				if(confirmar.equalsIgnoreCase("sim")) {
-					scanner.nextLine();
+				System.out.println("O cliente que procura é esse ? sim ou não?");
+				confirmar = scanner.nextLine();
+
+				if (confirmar.equalsIgnoreCase("sim")) {
 					repete = false;
-					
-				}else {
+
+				} else {
 					repete = true;
 				}
-				
-			}if (clienteSelecionado == null) {
+
+			}
+			if (clienteSelecionado == null) {
 				System.out.println("Cliente não encontrado");
 				repete = true;
 
