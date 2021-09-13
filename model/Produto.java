@@ -7,7 +7,7 @@ public class Produto {
 	
 	private static int numeroDeProdutos=0;
 
-	public Produto (String nome, float valor) {
+	public Produto (int id,String nome, float valor) {
 		this.nome=nome;
 		this.valor=valor;
 		this.id = Produto.gerarId();
@@ -38,6 +38,6 @@ public class Produto {
 		
 	}
 	public String toString(){
-		return "id="+id+", nome="+nome+", valor="+valor;
+		return "id="+id+", nome="+nome+", valor=R$ "+valor;
 	}
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import model.Cliente;
 import model.Endereco;
+import model.Produto;
 import repositorio.RepositorioDeCliente;
 import repositorio.RepositorioDeEndereco;
 import repositorio.RepositorioDeProduto;
@@ -14,12 +15,14 @@ public class InterfaceTextoCliente {
 	private RepositorioDeCliente repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
 	private InterfaceTextoCliente interfaceTextoCliente;
+	private InterfaceTextoProduto interfaceTextoProduto;
 
 	public InterfaceTextoCliente(Scanner sc, RepositorioDeCliente repositorioDeCliente,
 			RepositorioDeEndereco repositorioDeEndereco, RepositorioDeProduto repositorioDeProduto) {
 		this.scanner = sc;
 		this.repositorio = repositorioDeCliente;
 		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco, interfaceTextoCliente);
+		this.interfaceTextoProduto = new InterfaceTextoProduto(sc, repositorioDeProduto, interfaceTextoCliente);
 	}
 
 	public void gerenciarClientes() {
@@ -61,17 +64,19 @@ public class InterfaceTextoCliente {
 		int id = 0;
 		long cpf = 0;
 		long numeroDoTelefone = 0;
+		Produto produto;
 		Endereco endereco;
 		boolean repete = false;
 		boolean cancelado = false;
 
 		do {
-			System.out.println("Digite seu nome");
+			
+			System.out.println("Digite o seu nome");
 			nome = this.scanner.nextLine();
-			System.out.println("Digite seu CPF");
+			System.out.println("Digite o seu CPF ");
 			cpf = this.scanner.nextLong();
 
-			System.out.println("Digite seu telefone");
+			System.out.println("Digite o numero do seu telefone");
 			numeroDoTelefone = this.scanner.nextLong();
 			this.scanner.nextLine();
 
@@ -96,8 +101,9 @@ public class InterfaceTextoCliente {
 
 		{
 			endereco = this.interfaceTextoEndereco.cadastrarEndereco();
+			produto = this.interfaceTextoProduto.cadastrarProduto();
 			if (endereco != null) {
-				Cliente cliente = new Cliente(id, cpf, nome, numeroDoTelefone, endereco);
+				Cliente cliente = new Cliente(id, cpf, nome, numeroDoTelefone, endereco, produto);
 				repositorio.add(cliente);
 			}
 
@@ -173,7 +179,7 @@ public class InterfaceTextoCliente {
 		String confirmar;
 		Cliente clienteSelecionado = null;
 		do {
-			System.out.println("Digite o id do seu cliente");
+			System.out.println("Digite o id do cliente");
 			id = scanner.nextInt();
 			scanner.nextLine();
 			clienteSelecionado = repositorio.get(id);

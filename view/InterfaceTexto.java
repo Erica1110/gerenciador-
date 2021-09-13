@@ -15,13 +15,13 @@ public class InterfaceTexto {
 	public InterfaceTexto(RepositorioDeCliente repositorioDeCliente, RepositorioDeEndereco repositorioDeEndereco, RepositorioDeProduto repositorioDeProdutos) {
 		this.scanner=new Scanner(System.in);
 		this.interfaceTextoCliente= new InterfaceTextoCliente(scanner, repositorioDeCliente, repositorioDeEndereco, repositorioDeProdutos);
-		this.interfaceTextoProduto= new InterfaceTextoProduto(scanner, repositorioDeProdutos, repositorioDeEndereco);
+		this.interfaceTextoProduto= new InterfaceTextoProduto(scanner, repositorioDeProdutos, interfaceTextoCliente);
 		this.interfaceTextoEndereco= new InterfaceTextoEndereco(scanner, repositorioDeEndereco, interfaceTextoCliente);
 	}
 
 
 	public InterfaceTexto(InterfaceTexto repositorios) {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 

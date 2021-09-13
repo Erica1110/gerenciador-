@@ -6,15 +6,18 @@ public class Cliente {
 	private String nome;
 	private long numeroDeTelefone;
 	private Endereco endereco;
-
+	private Produto produto;
+	
 	private static int numeroDeClientes = 0;
 
-	public Cliente(int id, long cpf, String nome, long numeroDeTelefone, Endereco endereco) {
+	public Cliente(int id, long cpf, String nome, long numeroDeTelefone, Endereco endereco, Produto produto) {
+		
 		this.cpf = cpf;
 		this.nome = nome;
 		this.numeroDeTelefone = numeroDeTelefone;
 		this.endereco = endereco;
 		this.id = Cliente.gerarId();
+		this.produto = produto;
 	}
 
 	private static int gerarId() {
@@ -49,8 +52,11 @@ public class Cliente {
 		return endereco;
 		
 	}
+	public Produto getProduto(){
+		return produto;
+	}
 	public String  toString() {
-		return "id="+id+", cpf="+ cpf +", nome="+ nome +", numero do telefone="+ numeroDeTelefone + endereco.toString();
+		return "id="+id+", cpf="+ cpf +", nome="+ nome +", numero do telefone="+ numeroDeTelefone + endereco.toString()+produto.toString();
 		
 	}
 }

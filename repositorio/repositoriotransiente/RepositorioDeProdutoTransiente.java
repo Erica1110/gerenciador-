@@ -29,7 +29,7 @@ public class RepositorioDeProdutoTransiente extends RepositorioDeProduto {
 
 	@Override
 	public List<Produto> getAll() {
-		return null;
+		return produto;
 	}
 	
 	public Produto get(int id) {

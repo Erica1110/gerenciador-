@@ -1,6 +1,8 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
+
 
 import model.Endereco;
 import repositorio.RepositorioDeEndereco;
@@ -24,7 +26,8 @@ public class InterfaceTextoEndereco {
 			System.out.println("1-Cadastrar");
 			System.out.println("2-Editar");
 			System.out.println("3-Deletar endereco");
-			System.out.println("4-Sair");
+			System.err.println("4-Ver todos");
+			System.out.println("5-Sair");
 			opcao = this.scanner.nextInt();
 			this.scanner.nextLine();
 			switch (opcao) {
@@ -37,9 +40,12 @@ public class InterfaceTextoEndereco {
 			case 3:
 				excluirEndereco();
 				break;
+			case 4:
+				exibirTodos();
+				break;
 			}
 
-		} while (opcao != 4);
+		} while (opcao != 5);
 
 	}
 
@@ -54,7 +60,7 @@ public class InterfaceTextoEndereco {
 		System.out.println("Em qual bairro você mora ?");
 		bairro = scanner.nextLine();
 		System.out.println("E qual o numero da sua casa ?");
-		numeroDaCasa = scanner.nextInt();
+		numeroDaCasa = scanner.nextInt();scanner.nextLine();
 		System.out.println("os dados cidade=" + cidade + ", bairro=" + bairro + ", numero da casa=" + numeroDaCasa
 				+ " estão coretos?");
 		System.out.println("");
@@ -69,7 +75,7 @@ public class InterfaceTextoEndereco {
 				endereco = new Endereco(id, cidade, numeroDaCasa, bairro);
 				repositorio.add(endereco);
 
-				System.out.println("Processo concluido");
+				
 
 				repete = false;
 			} else {
@@ -96,6 +102,8 @@ public class InterfaceTextoEndereco {
 
 			System.out.println("Digite o nome do bairro que você mora");
 			enderecoSelecionado.setBairro(scanner.nextLine());
+			
+			System.out.println(enderecoSelecionado);
 
 			System.out.println("Os dados estão corretos? sim ou não");
 			confirmar = scanner.nextLine();
@@ -111,6 +119,13 @@ public class InterfaceTextoEndereco {
 		} while (repete);
 
 		return enderecoSelecionado;
+	}
+	public void exibirTodos() {
+		List<Endereco> endereco = this.repositorio.getAll();
+		for (int i = 0; i <endereco.size(); i++) {
+			Endereco enderecoSelecionado =endereco.get(i);
+			System.out.println(enderecoSelecionado);
+		}
 	}
 
 	public Endereco excluirEndereco() {
