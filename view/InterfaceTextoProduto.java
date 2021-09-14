@@ -3,24 +3,19 @@ package view;
 import java.util.List;
 import java.util.Scanner;
 
-import model.Cliente;
 import model.Produto;
 import repositorio.RepositorioDeProduto;
 
 public class InterfaceTextoProduto {
-	
+
 	private Scanner scanner;
 	private RepositorioDeProduto repositorio;
 
-	public InterfaceTextoProduto(Scanner sc, RepositorioDeProduto repositorioDeProduto, InterfaceTextoCliente interfaceTextoCliente) {
+	public InterfaceTextoProduto(Scanner sc, RepositorioDeProduto repositorioDeProduto) {
 		this.scanner = sc;
 		this.repositorio = repositorioDeProduto;
 
 	}
-
-
-	
-
 
 	public void gerenciarProduto() {
 		int opcao = 0;
@@ -31,21 +26,22 @@ public class InterfaceTextoProduto {
 			System.out.println("3-Excluir produto");
 			System.out.println("4-Ver todos produtos");
 			System.out.println("5-Sair");
-			
+
 			opcao = this.scanner.nextInt();
 			switch (opcao) {
 
 			case 1:
 				this.cadastrarProduto();
 				break;
-				
+
 			case 2:
 				this.editarProduto();
 				break;
-				
+
 			case 3:
 				this.excluirProduto();
-				
+				break;
+
 			case 4:
 				exibirProdutos();
 				break;
@@ -56,13 +52,13 @@ public class InterfaceTextoProduto {
 	}
 
 	public Produto cadastrarProduto() {
-		int id =0;
+		int id = 0;
 		float valor;
 		String nome;
 		boolean repete = false;
 		String confirmar;
 		this.scanner.nextLine();
-		Produto produto=null;	
+		Produto produto = null;
 		do {
 			System.out.println("Digite o nome do produto");
 			nome = scanner.nextLine();
@@ -72,8 +68,7 @@ public class InterfaceTextoProduto {
 			System.out.println("Os dados valor=R$ " + valor + ", nome=" + nome + " estão corretos?");
 			System.out.println("Digite sim ou não");
 			confirmar = scanner.nextLine();
-					
-			
+
 			if (confirmar.equalsIgnoreCase("sim")) {
 				produto = new Produto(id, nome, valor);
 				repositorio.add(produto);
@@ -84,36 +79,38 @@ public class InterfaceTextoProduto {
 			}
 
 		} while (repete);
-		
+
 		return produto;
 	}
 
-	public Produto editarProduto(){
+	public Produto editarProduto() {
 		boolean repete = false;
 		String confirmar;
 		Produto produtoSelecionado = selecionarProduto();
 		do {
 			System.out.println("Digite o nome do produto");
 			produtoSelecionado.setNome(scanner.nextLine());
-			
 			System.out.println("Digite o valor do produtos em Reais");
 			produtoSelecionado.setValor(scanner.nextFloat());
+			scanner.nextLine();
 			
 			System.out.println(produtoSelecionado);
 			System.out.println("O dados estão corretos? sim ou não");
-			confirmar=scanner.nextLine();
-			
-			if(confirmar.equalsIgnoreCase("sim")) {
-				System.out.println("Processo comcluido!");
-			}else {
+			confirmar = scanner.nextLine();
+
+			if (confirmar.equalsIgnoreCase("sim")) {
+				System.out.println("Processo concluido!");
+				scanner.nextLine();
+				repete = false;
+				
+			} else {
 				repete = true;
 			}
-			
-		}while(repete);
-		
+
+		} while (repete);
+
 		return produtoSelecionado;
 	}
-
 
 	public void exibirProdutos() {
 		List<Produto> produto = this.repositorio.getAll();
@@ -121,7 +118,7 @@ public class InterfaceTextoProduto {
 			Produto produtoSelecionado = produto.get(i);
 			System.out.println(produtoSelecionado);
 		}
-		
+
 	}
 
 	public void excluirProduto() {
@@ -138,14 +135,17 @@ public class InterfaceTextoProduto {
 		String confirmar;
 		do {
 			System.out.println("Digite o id do produto ");
-			id = this.scanner.nextInt();scanner.nextLine();
+			id = this.scanner.nextInt();
+			scanner.nextLine();
 			produtoSelecionado = this.repositorio.get(id);
-			
+
 			if (produtoSelecionado != null) {
 				System.out.println(produtoSelecionado);
 				System.out.println("O produto que você procura é esse? sim ou não?");
-				confirmar=scanner.nextLine();
-				if(confirmar.equalsIgnoreCase("sim")) {
+				confirmar = scanner.nextLine();
+
+				if (confirmar.equalsIgnoreCase("sim")) {
+					repete = false;
 					return produtoSelecionado;
 					
 				}
@@ -155,9 +155,6 @@ public class InterfaceTextoProduto {
 				System.out.println("Produto não encontrado");
 
 				repete = true;
-
-			} else {
-				repete = false;
 
 			}
 

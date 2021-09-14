@@ -15,14 +15,13 @@ public class InterfaceTextoCliente {
 	private RepositorioDeCliente repositorio;
 	private InterfaceTextoEndereco interfaceTextoEndereco;
 	private InterfaceTextoCliente interfaceTextoCliente;
-	private InterfaceTextoProduto interfaceTextoProduto;
+	
 
 	public InterfaceTextoCliente(Scanner sc, RepositorioDeCliente repositorioDeCliente,
 			RepositorioDeEndereco repositorioDeEndereco, RepositorioDeProduto repositorioDeProduto) {
 		this.scanner = sc;
 		this.repositorio = repositorioDeCliente;
-		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco, interfaceTextoCliente);
-		this.interfaceTextoProduto = new InterfaceTextoProduto(sc, repositorioDeProduto, interfaceTextoCliente);
+		this.interfaceTextoEndereco = new InterfaceTextoEndereco(sc, repositorioDeEndereco, interfaceTextoCliente);	
 	}
 
 	public void gerenciarClientes() {
@@ -64,7 +63,6 @@ public class InterfaceTextoCliente {
 		int id = 0;
 		long cpf = 0;
 		long numeroDoTelefone = 0;
-		Produto produto;
 		Endereco endereco;
 		boolean repete = false;
 		boolean cancelado = false;
@@ -101,9 +99,8 @@ public class InterfaceTextoCliente {
 
 		{
 			endereco = this.interfaceTextoEndereco.cadastrarEndereco();
-			produto = this.interfaceTextoProduto.cadastrarProduto();
 			if (endereco != null) {
-				Cliente cliente = new Cliente(id, cpf, nome, numeroDoTelefone, endereco, produto);
+				Cliente cliente = new Cliente(id, cpf, nome, numeroDoTelefone, endereco);
 				repositorio.add(cliente);
 			}
 
