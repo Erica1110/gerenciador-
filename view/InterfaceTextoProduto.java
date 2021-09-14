@@ -29,7 +29,7 @@ public class InterfaceTextoProduto {
 			System.out.println("1-Cadastrar Produto");
 			System.out.println("2-Editar");
 			System.out.println("3-Excluir produto");
-			System.out.println("4-Ver todos rodutos");
+			System.out.println("4-Ver todos produtos");
 			System.out.println("5-Sair");
 			
 			opcao = this.scanner.nextInt();
