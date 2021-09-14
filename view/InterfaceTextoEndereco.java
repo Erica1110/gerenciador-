@@ -26,7 +26,7 @@ public class InterfaceTextoEndereco {
 			System.out.println("1-Cadastrar");
 			System.out.println("2-Editar");
 			System.out.println("3-Deletar endereco");
-			System.err.println("4-Ver todos");
+			System.out.println("4-Ver todos");
 			System.out.println("5-Sair");
 			opcao = this.scanner.nextInt();
 			this.scanner.nextLine();

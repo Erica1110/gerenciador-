@@ -99,7 +99,7 @@ public class InterfaceTextoProduto {
 			System.out.println("Digite o valor do produtos em Reais");
 			produtoSelecionado.setValor(scanner.nextFloat());
 			
-			System.err.println(produtoSelecionado);
+			System.out.println(produtoSelecionado);
 			System.out.println("O dados estão corretos? sim ou não");
 			confirmar=scanner.nextLine();
 			
