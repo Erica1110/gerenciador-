@@ -2,7 +2,6 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
-
 import model.Produto;
 import repositorio.RepositorioDeProduto;
 
@@ -72,7 +71,9 @@ public class InterfaceTextoProduto {
 			if (confirmar.equalsIgnoreCase("sim")) {
 				produto = new Produto(id, nome, valor);
 				repositorio.add(produto);
+				
 				System.out.println("Cadastro concluido com sucesso");
+				scanner.nextLine();
 				repete = false;
 			} else {
 				repete = true;
@@ -93,7 +94,7 @@ public class InterfaceTextoProduto {
 			System.out.println("Digite o valor do produtos em Reais");
 			produtoSelecionado.setValor(scanner.nextFloat());
 			scanner.nextLine();
-			
+
 			System.out.println(produtoSelecionado);
 			System.out.println("O dados estão corretos? sim ou não");
 			confirmar = scanner.nextLine();
@@ -102,7 +103,7 @@ public class InterfaceTextoProduto {
 				System.out.println("Processo concluido!");
 				scanner.nextLine();
 				repete = false;
-				
+
 			} else {
 				repete = true;
 			}
@@ -121,13 +122,24 @@ public class InterfaceTextoProduto {
 
 	}
 
-	public void excluirProduto() {
+	public Produto excluirProduto() {
+		String confirmar;
+		
 		Produto produtoSelecionado = selecionarProduto();
 		System.out.println(produtoSelecionado);
-		System.out.println("O produdo que você quer excluir é esse? sim ou não?");
-
+		
+			System.out.println("tem certeza que deseja excluir? sim ou não?");
+			confirmar = scanner.nextLine();
+			if (confirmar.equalsIgnoreCase("sim")) {
+				repositorio.delete(produtoSelecionado);
+				System.out.println("Produto deletado com sucesso.");
+				scanner.nextLine();
+				
+			}else {
+				
+			}
+				return null;
 	}
-
 	public Produto selecionarProduto() {
 		int id = 0;
 		boolean repete = false;
@@ -147,7 +159,7 @@ public class InterfaceTextoProduto {
 				if (confirmar.equalsIgnoreCase("sim")) {
 					repete = false;
 					return produtoSelecionado;
-					
+
 				}
 			}
 
