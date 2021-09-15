@@ -124,6 +124,7 @@ public class InterfaceTextoProduto {
 
 	public Produto excluirProduto() {
 		String confirmar;
+<<<<<<< Updated upstream
 		
 		Produto produtoSelecionado = selecionarProduto();
 		System.out.println(produtoSelecionado);
@@ -139,6 +140,19 @@ public class InterfaceTextoProduto {
 				
 			}
 				return null;
+=======
+		Produto produtoSelecionado = selecionarProduto();
+		System.out.println(produtoSelecionado);
+		System.out.println("O produdo que você quer excluir é esse? sim ou não?");
+		confirmar=scanner.nextLine();
+		if(confirmar.equalsIgnoreCase("sim")) {
+			repositorio.delete(produtoSelecionado);
+			
+		}else {
+			
+		}
+		
+>>>>>>> Stashed changes
 	}
 	public Produto selecionarProduto() {
 		int id = 0;
